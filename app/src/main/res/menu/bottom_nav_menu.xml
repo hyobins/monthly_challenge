@@ -7,18 +7,18 @@
         android:title="홈" />
 
     <item
-        android:id="@+id/navigation_calendar"
+        android:id="@+id/navigation_menu"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="시간표" />
+        android:title="메뉴" />
 
     <item
-        android:id="@+id/navigation_board"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="게시판" />
-
-    <item
-        android:id="@+id/navigation_bell"
+        android:id="@+id/navigation_alarm"
         android:icon="@drawable/ic_launcher_background"
         android:title="알림" />
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="설정" />
 
 </menu>

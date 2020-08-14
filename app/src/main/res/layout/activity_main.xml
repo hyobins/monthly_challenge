@@ -10,17 +10,22 @@
             type="com.example.monthly_challenge.MainActivity"/>
 
     </data>
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!" />
-
-    </LinearLayout>
-
+            app:itemIconSize="22dp"
+            app:itemTextColor="#3498DB"
+            android:layout_alignParentBottom="true"
+            android:background="#ffffff"
+            app:menu="@menu/bottom_nav_menu"/>
+    </RelativeLayout>
 </layout>
