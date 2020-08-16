@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
     private DrawerLayout drawerLayout;
+    private NavigationView drawerNavigationView;
 
 
     @Override
@@ -41,14 +42,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         alarmFragment = new AlarmFragment();
         settingFragment = new SettingFragment();
         fragmentManager = getSupportFragmentManager();
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = binding.bottomNavigation;
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.main_layout, homeFragment).commitAllowingStateLoss();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        drawerLayout = binding.drawerLayout;
+        drawerNavigationView = binding.navView;
+        drawerNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 return false;
