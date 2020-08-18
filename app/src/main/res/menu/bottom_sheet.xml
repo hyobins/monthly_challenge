@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/editPhoneItem"
+        android:id="@+id/projectItem"
         android:icon="@drawable/ic_launcher_background"
-        android:title="수정" />
+        android:title="프로젝트" />
     <item
-        android:id="@+id/deletePhoneItem"
+        android:id="@+id/portfolioItem"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="삭제" />
+        android:title="포트폴리오" />
     <item
-        android:id="@+id/insertPhoneItem"
+        android:id="@+id/trendItem"
         android:icon="@drawable/ic_launcher_background"
-        android:title="입력" />
+        android:title="트렌드" />
+    <item
+        android:id="@+id/serviceItem"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="제휴서비스" />
+    <item
+        android:id="@+id/centerItem"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="고객센터" />
 </menu>
