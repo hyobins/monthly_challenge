@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="activity"
             type="Login.LoginActivity"/>
     </data>
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        android:orientation="vertical"
-        tools:context=".Login">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/cancel_btn"
@@ -20,8 +19,7 @@
             android:layout_height="0dp"
             android:layout_margin="20dp"
             android:layout_weight="0.2"
-            android:paddingLeft="350dp"
-            app:srcCompat="@drawable/close" />
+            android:paddingLeft="350dp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -51,11 +49,10 @@
                 android:id="@+id/imageView6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/id" />
+                android:layout_weight="1" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editText_email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -85,11 +82,10 @@
                 android:id="@+id/imageView7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/password" />
+                android:layout_weight="1" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/editText_password"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -105,7 +101,7 @@
 
         <Button
             android:id="@+id/login_btn"
-            android:onClick="@{activity::LoginSuccess}"
+            android:onClick="@{activity::Click_Login}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="50dp"
@@ -133,6 +129,7 @@
 
             <TextView
                 android:id="@+id/textView6"
+                android:onClick="@{activity::To_Signup_Page}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -150,45 +147,7 @@
             android:paddingLeft="50dp"
             android:paddingRight="50dp">
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="12dp"
-                app:srcCompat="@drawable/naver" />
 
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="12dp"
-                app:srcCompat="@drawable/kakao" />
-
-            <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="12dp"
-                app:srcCompat="@drawable/face" />
-
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="12dp"
-                app:srcCompat="@drawable/google" />
-
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="12dp"
-                app:srcCompat="@drawable/twitter" />
         </LinearLayout>
 
     </LinearLayout>
