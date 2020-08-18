@@ -12,7 +12,9 @@ import com.example.monthly_challenge.BottomNavigationFragment.*;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.monthly_challenge.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private FragmentTransaction transaction;
     private DrawerLayout drawerLayout;
     private NavigationView drawerNavigationView;
+    private MenuItem projectIng;
+    private View header;
 
 
     @Override
@@ -46,12 +50,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.main_layout, homeFragment).commitAllowingStateLoss();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+//        header = getMenuInflater().inflate(R.menu.drawer_nav_menu, );
 
         drawerLayout = binding.drawerLayout;
         drawerNavigationView = binding.navView;
         drawerNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                projectIng = drawerNavigationView.inflateMenu(R.menu.drawer_nav_menu)
+                switch (item.getItemId()){
+                    case R.id.project:
+//                        if(projectIng.isVisible()) projectIng.setVisible(false);
+//                        else projectIng.setVisible(true);
+                        break;
+                    case R.id.project_ing:
+//                        projectIng.setVisible(true);
+                        transaction.replace(R.id.main_layout, menuFragment).commitAllowingStateLoss();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+
+                        break;
+
+                }
                 return false;
             }
         });
@@ -68,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
             case R.id.navigation_menu:
                 drawerLayout.openDrawer(GravityCompat.START);
-                transaction.replace(R.id.main_layout, menuFragment).commitAllowingStateLoss();
                 return true;
             case R.id.navigation_alarm:
                 transaction.replace(R.id.main_layout, alarmFragment).commitAllowingStateLoss();
