@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void To_Signup_Page(View view){
-        Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+        Intent intent = new Intent(getApplicationContext(), SignupTypeActivity.class);
         startActivity(intent);
     }
 
