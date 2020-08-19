@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import Login.LoginActivity;
+import Login.SignupTypeActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
                     }
                     finish();
                     Intent intent = new Intent();
-                    intent.setClass(SplashActivity.this, Login.LoginTypeActivity.class);
+                    intent.setClass(SplashActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
             }
