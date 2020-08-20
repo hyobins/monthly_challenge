@@ -16,10 +16,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class IndivSignupActivity extends AppCompatActivity {
     ActivityIndivSignupBinding binding;
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    Map<String, Object> individual = new HashMap<>();
+    Map<String, Object> my_project = new HashMap<>();
+    Map<String, Object> progress_project = new HashMap<>();
+    Map<String, Object> judge_project = new HashMap<>();
+    Map<String, Object> end_project = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +38,20 @@ public class IndivSignupActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_indiv_signup);
         binding.setActivity(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        progress_project.put("project_id",null);
+        judge_project.put("project_id",null);
+        end_project.put("project_id",null);
+        my_project.put("progress_project",progress_project);
+        my_project.put("judge_project",judge_project);
+        my_project.put("end_project",end_project);
+        individual.put("uid",null);
+        individual.put("email",null);
+        individual.put("record",null);
+        individual.put("introduce",null);
+        individual.put("interest",null);
+        individual.put("profile_url",null);
+        individual.put("my_project",my_project);
+        individual.put("virtual_account",null);
     }
 
     public void Click_Join(View view){
@@ -35,6 +60,8 @@ public class IndivSignupActivity extends AppCompatActivity {
 
         if (!email.equals("") && !pw.equals((""))) {
             createUser(email,pw);
+//            user = firebaseAuth.getCurrentUser();
+//            System.out.println(user.getUid());
         } else {
             Toast.makeText(IndivSignupActivity.this, "email과 비밀번호를 입력하세요.",
                     Toast.LENGTH_LONG).show();
@@ -48,6 +75,11 @@ public class IndivSignupActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //회원가입 성공시
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            System.out.println(user.getUid());
+                            individual.put("uid",user.getUid());
+                            individual.put("email",user.getEmail());
+                            LoginActivity.addCollection("individual",individual);
                             Intent intent = new Intent(IndivSignupActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
