@@ -134,7 +134,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/card1"
+                    android:id="@+id/card0"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:orientation="horizontal">
@@ -524,7 +524,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/titleText"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:gravity="center"

@@ -102,21 +102,30 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    static public void addCollection(String collection, Map<String, Object> document){
-        db.collection(collection)
-                .add(document)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+    static public void addCollection(String collection, String uid, Map<String, Object> document){
+        db.collection(collection).document(uid)
+                .set(document)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(null, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    public void onSuccess(Void aVoid) {
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(null, "Error adding document", e);
+
                     }
                 });
     }
+    static public void addSubCollection(String collection, String uid, String sub_collection){
+        db.collection(collection).document(uid)
+                .collection(sub_collection);
+        // document 값이 있어야 추가할 수 있으므로
+        // 회원가입 초기에는 이러한 값이 원래 없어야 하므로 일단 이렇게 두었습니다.
+        // -> 이후 프로젝트를 신청한다면 추가를 시킬 예정
+
+    }
+
 }
 
