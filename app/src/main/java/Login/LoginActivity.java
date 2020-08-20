@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,10 +15,16 @@ import com.example.monthly_challenge.MainActivity;
 import com.example.monthly_challenge.R;
 import com.example.monthly_challenge.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Map;
 
 /*일반(개인) 회원 로그인 페이지 입니다. */
 
@@ -27,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private EditText editTextEmail;
     private EditText editTextPassword;
+    static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +100,23 @@ public class LoginActivity extends AppCompatActivity {
         if(firebaseAuthListener != null){
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
+    }
+
+    static public void addCollection(String collection, Map<String, Object> document){
+        db.collection(collection)
+                .add(document)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(null, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(null, "Error adding document", e);
+                    }
+                });
     }
 }
 
