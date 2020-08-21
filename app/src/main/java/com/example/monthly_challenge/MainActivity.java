@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private NavigationView drawerNavigationView;
     private MenuItem projectIng;
     private View header;
-    static ArrayList<ListItem> listItems = new ArrayList();
+    static ArrayList<ListItem> listItems;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     SimpleDateFormat simpleDateFormat;
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.main_layout, homeFragment).commitAllowingStateLoss();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        listItems = new ArrayList();
         simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
         drawerLayout = binding.drawerLayout;
