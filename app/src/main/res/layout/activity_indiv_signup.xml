@@ -57,6 +57,51 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editText_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Record"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editText_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Introduce"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/editText_interest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Interest"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/profile_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Profile URL"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/virtualAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="가상계좌"
+            android:textColor="@android:color/black" />
         ​
         <Button
             android:id="@+id/btn_join"
