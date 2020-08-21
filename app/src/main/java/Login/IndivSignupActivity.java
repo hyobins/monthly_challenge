@@ -38,19 +38,12 @@ public class IndivSignupActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_indiv_signup);
         binding.setActivity(this);
         firebaseAuth = FirebaseAuth.getInstance();
-        progress_project.put("project_id",null);
-        judge_project.put("project_id",null);
-        end_project.put("project_id",null);
-        my_project.put("progress_project",progress_project);
-        my_project.put("judge_project",judge_project);
-        my_project.put("end_project",end_project);
-        individual.put("uid",null);
+
         individual.put("email",null);
         individual.put("record",null);
         individual.put("introduce",null);
         individual.put("interest",null);
         individual.put("profile_url",null);
-        individual.put("my_project",my_project);
         individual.put("virtual_account",null);
     }
 
@@ -60,8 +53,7 @@ public class IndivSignupActivity extends AppCompatActivity {
 
         if (!email.equals("") && !pw.equals((""))) {
             createUser(email,pw);
-//            user = firebaseAuth.getCurrentUser();
-//            System.out.println(user.getUid());
+//
         } else {
             Toast.makeText(IndivSignupActivity.this, "email과 비밀번호를 입력하세요.",
                     Toast.LENGTH_LONG).show();
@@ -77,9 +69,13 @@ public class IndivSignupActivity extends AppCompatActivity {
                             //회원가입 성공시
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             System.out.println(user.getUid());
-                            individual.put("uid",user.getUid());
+//                            individual.put("uid",user.getUid());
                             individual.put("email",user.getEmail());
-                            LoginActivity.addCollection("individual",individual);
+                            LoginActivity.addCollection("individual",user.getUid(),individual);
+                            LoginActivity.addSubCollection("individual",user.getUid(),
+                                                "my_project");
+                            //document안에 field : project_id, project_state
+
                             Intent intent = new Intent(IndivSignupActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();

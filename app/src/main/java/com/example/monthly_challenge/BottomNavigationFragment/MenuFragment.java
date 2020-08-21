@@ -20,14 +20,20 @@ import androidx.fragment.app.Fragment;
 import com.example.monthly_challenge.R;
 import com.example.monthly_challenge.databinding.ActivityMainBinding;
 import com.example.monthly_challenge.databinding.FragmentMenuBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MenuFragment extends Fragment implements View.OnClickListener {
     ViewGroup viewGroup;
     ScrollView projectInfoView;
     ScrollView projectIngView;
-    LinearLayout card1;
+    LinearLayout card0;
     LinearLayout infoLayout;
     LinearLayout submitLayout;
+    LinearLayout[] card;
     View infoView;
     View submitView;
     TextView infoText;
@@ -39,6 +45,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
     ImageView backButton;
 
+    TextView title0;
+    TextView titleText;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     @Nullable
     @Override
@@ -46,7 +56,9 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_menu, container, false);
         projectInfoView = viewGroup.findViewById(R.id.projectInfoView);
         projectIngView = viewGroup.findViewById(R.id.projectIngView);
-        card1 = viewGroup.findViewById(R.id.card1);
+        card0 = viewGroup.findViewById(R.id.card0);
+//        card = new LinearLayout[]{card1};
+
         infoLayout = viewGroup.findViewById(R.id.infoLayout);
         infoView = viewGroup.findViewById(R.id.infoView);
         infoText = viewGroup.findViewById(R.id.infoText);
@@ -56,15 +68,33 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
         backButton = viewGroup.findViewById(R.id.backButton);
 
+        title0 = viewGroup.findViewById(R.id.textView21);
+        titleText = viewGroup.findViewById(R.id.titleText);
+
         prevLayout = infoLayout;
         prevView = infoView;
         prevText = infoText;
 
-        card1.setOnClickListener(this);
+        card0.setOnClickListener(this);
         infoText.setOnClickListener(this);
         submitText.setOnClickListener(this);
         backButton.setOnClickListener(this);
 
+        db.collection("project")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                title0.setText(document.get("title").toString());
+//                                Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        } else {
+//                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
 
         return viewGroup;
     }
@@ -87,9 +117,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.card1:
+            case R.id.card0:
                 projectIngView.setVisibility(View.GONE);
                 projectInfoView.setVisibility(View.VISIBLE);
+                titleText.setText(title0.getText().toString());
                 break;
             case R.id.submitText:
 
