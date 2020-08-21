@@ -12,21 +12,32 @@ import com.example.monthly_challenge.BottomNavigationFragment.*;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.health.SystemHealthManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.monthly_challenge.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import butterknife.BindView;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -43,9 +54,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private NavigationView drawerNavigationView;
     private MenuItem projectIng;
     private View header;
-
+    static ArrayList<ListItem> listItems = new ArrayList();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-//
+
+    SimpleDateFormat simpleDateFormat;
 //    Map<String, Object> project = new HashMap<>();
 //    Map<String, Object> team = new HashMap<>();
     @Override
@@ -62,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.main_layout, homeFragment).commitAllowingStateLoss();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-//        header = getMenuInflater().inflate(R.menu.drawer_nav_menu, );
+        simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
         drawerLayout = binding.drawerLayout;
         drawerNavigationView = binding.navView;
@@ -119,7 +131,26 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //                        Log.w(null, "Error adding document", e);
 //                    }
 //                });
+        db.collection("project")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                ListItem listItem = new ListItem(document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                                                ,document.get("reward").toString());
+                                System.out.println(listItem);
+                                listItems.add(listItem);
+//                                Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        } else {
+//                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
 
+        System.out.println(listItems);
     }
 
     @Override
@@ -140,5 +171,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
         }
         return false;
+    }
+
+    static public ArrayList<ListItem> getListItem(){
+        return listItems;
     }
 }
