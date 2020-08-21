@@ -39,12 +39,12 @@ public class IndivSignupActivity extends AppCompatActivity {
         binding.setActivity(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        individual.put("email",null);
-        individual.put("record",null);
-        individual.put("introduce",null);
-        individual.put("interest",null);
-        individual.put("profile_url",null);
-        individual.put("virtual_account",null);
+//        individual.put("email",null);
+//        individual.put("record",null);
+//        individual.put("introduce",null);
+//        individual.put("interest",null);
+//        individual.put("profile_url",null);
+//        individual.put("virtual_account",null);
     }
 
     public void Click_Join(View view){
@@ -53,7 +53,7 @@ public class IndivSignupActivity extends AppCompatActivity {
 
         if (!email.equals("") && !pw.equals((""))) {
             createUser(email,pw);
-//
+
         } else {
             Toast.makeText(IndivSignupActivity.this, "email과 비밀번호를 입력하세요.",
                     Toast.LENGTH_LONG).show();
@@ -61,6 +61,12 @@ public class IndivSignupActivity extends AppCompatActivity {
     }
 
     private void createUser(String email, String password) {
+        final String record = binding.editTextRecord.getText().toString().trim();
+        final String introduce = binding.editTextIntroduce.getText().toString().trim();
+        final String interest = binding.editTextInterest.getText().toString().trim();
+        final String profile_url = binding.profileUrl.getText().toString().trim();
+        final String virtual_account = binding.virtualAccount.getText().toString().trim();
+
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -71,6 +77,13 @@ public class IndivSignupActivity extends AppCompatActivity {
                             System.out.println(user.getUid());
 //                            individual.put("uid",user.getUid());
                             individual.put("email",user.getEmail());
+
+                            individual.put("record",record);
+                            individual.put("introduce",introduce);
+                            individual.put("interest",interest);
+                            individual.put("profile_url",profile_url);
+                            individual.put("virtual_account",virtual_account);
+
                             LoginActivity.addCollection("individual",user.getUid(),individual);
                             LoginActivity.addSubCollection("individual",user.getUid(),
                                                 "my_project");
