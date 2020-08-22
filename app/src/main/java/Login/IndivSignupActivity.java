@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.monthly_challenge.R;
@@ -38,13 +39,6 @@ public class IndivSignupActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_indiv_signup);
         binding.setActivity(this);
         firebaseAuth = FirebaseAuth.getInstance();
-
-//        individual.put("email",null);
-//        individual.put("record",null);
-//        individual.put("introduce",null);
-//        individual.put("interest",null);
-//        individual.put("profile_url",null);
-//        individual.put("virtual_account",null);
     }
 
     public void Click_Join(View view){
@@ -61,7 +55,12 @@ public class IndivSignupActivity extends AppCompatActivity {
     }
 
     private void createUser(String email, String password) {
-        final String record = binding.editTextRecord.getText().toString().trim();
+        //라디오 버튼 값 가져오기
+        int id = binding.radioGroup.getCheckedRadioButtonId();
+        RadioButton rb = findViewById(id);
+
+        final String name = binding.editTextName.getText().toString().trim();
+        final String position = rb.getText().toString().trim();
         final String introduce = binding.editTextIntroduce.getText().toString().trim();
         final String interest = binding.editTextInterest.getText().toString().trim();
         final String profile_url = binding.profileUrl.getText().toString().trim();
@@ -74,19 +73,16 @@ public class IndivSignupActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             //회원가입 성공시
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                            System.out.println(user.getUid());
-//                            individual.put("uid",user.getUid());
                             individual.put("email",user.getEmail());
-
-                            individual.put("record",record);
+                            individual.put("name",name);
+                            individual.put("position",position);
                             individual.put("introduce",introduce);
                             individual.put("interest",interest);
                             individual.put("profile_url",profile_url);
                             individual.put("virtual_account",virtual_account);
 
                             LoginActivity.addCollection("individual",user.getUid(),individual);
-                            LoginActivity.addSubCollection("individual",user.getUid(),
-                                                "my_project");
+                            LoginActivity.addSubCollection("individual",user.getUid(), "my_project");
                             //document안에 field : project_id, project_state
 
                             Intent intent = new Intent(IndivSignupActivity.this, LoginActivity.class);
