@@ -1,13 +1,19 @@
-package com.example.monthly_challenge;
+package Project;
 
-public class ProgressListItem {
+public class JudgeListItem {
+    private String projectId;
     private String title;
     private String deadline;
     private String reward;
-    public ProgressListItem(String title, String deadline, String reward) {
+    public JudgeListItem(String projectId,String title, String deadline, String reward) {
+        this.projectId = projectId;
         this.title = title;
         this.deadline = deadline;
         this.reward = reward;
+    }
+
+    public String getProjectId() {
+        return this.projectId;
     }
 
     public String getTitle() {
@@ -21,5 +27,4 @@ public class ProgressListItem {
     public String getReward() {
         return this.reward;
     }
-
 }

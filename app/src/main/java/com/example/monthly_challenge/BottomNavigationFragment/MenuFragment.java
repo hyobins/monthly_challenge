@@ -14,9 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.monthly_challenge.EndListItem;
-import com.example.monthly_challenge.JudgeListItem;
-import com.example.monthly_challenge.ProgressListItem;
+import Project.EndListItem;
+import Project.JudgeListItem;
+import Project.ProgressListItem;
 import com.example.monthly_challenge.MainActivity;
 import com.example.monthly_challenge.R;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,6 +32,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.projectIngView) ScrollView projectIngView;
     @BindView(R.id.infoLayout) LinearLayout infoLayout;
     @BindView(R.id.submitLayout) LinearLayout submitLayout;
+    @BindView(R.id.matchLayout) LinearLayout matchLayout;
     @BindView(R.id.linearLayout_list0) LinearLayout linearLayout_list0;
     @BindView(R.id.linearLayout_list1) LinearLayout linearLayout_list1;
     @BindView(R.id.linearLayout_list2) LinearLayout linearLayout_list2;
@@ -62,8 +63,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     TextView[] textView_listRewards;
 
     @BindView(R.id.infoView) View infoView;
+    @BindView(R.id.matchView) View matchView;
     @BindView(R.id.submitView) View submitView;
     @BindView(R.id.infoText) TextView infoText;
+    @BindView(R.id.matchText) TextView matchText;
     @BindView(R.id.submitText) TextView submitText;
 
     LinearLayout prevLayout;
@@ -86,6 +89,11 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     ArrayList<ProgressListItem> progressListItems;
     ArrayList<JudgeListItem> judgeListItems;
     ArrayList<EndListItem> endListItems;
+
+    ArrayList<ProgressListItem> progressShowListItems;
+    ArrayList<JudgeListItem> judgeShowListItems;
+    ArrayList<EndListItem> endShowListItems;
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
@@ -117,12 +125,16 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         progressListItems = MainActivity.getProgressListItem();
         judgeListItems = MainActivity.getJudgeListItem();
         endListItems = MainActivity.getEndListItem();
+//        progressShowListItems = new ArrayList<ProgressListItem>();
+//        judgeShowListItems = new ArrayList<JudgeListItem>();
+//        endShowListItems = new ArrayList<EndListItem>();
 //        System.out.println(progressListItems);
 
         for(int i=0;i<linearLayout_lists.length;i++){
             linearLayout_lists[i].setOnClickListener(this);
         }
         infoText.setOnClickListener(this);
+        matchText.setOnClickListener(this);
         submitText.setOnClickListener(this);
         backButton.setOnClickListener(this);
         textView_progress.setOnClickListener(this);
@@ -213,6 +225,11 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                 prevSettingAndChange(submitText,submitView,submitLayout);
 
                 break;
+            case R.id.matchText:
+
+                prevSettingAndChange(matchText,matchView,matchLayout);
+
+                break;
             case R.id.infoText:
 
                 prevSettingAndChange(infoText,infoView, infoLayout);
@@ -235,8 +252,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setInitProgressList(ArrayList<ProgressListItem> progressListItems){
+        progressShowListItems = new ArrayList<ProgressListItem>();
         if(progressListItems.size() <= linearLayout_lists.length){
             for(int i = 0; i< progressListItems.size(); i++){
+                progressShowListItems.add(progressListItems.get(i));
                 textView_listTitles[i].setText(progressListItems.get(i).getTitle());
                 textView_listDeadlines[i].setText(progressListItems.get(i).getDeadline());
                 textView_listRewards[i].setText(progressListItems.get(i).getReward());
@@ -244,6 +263,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         }
         else{
             for(int i=0;i<linearLayout_lists.length;i++){
+                progressShowListItems.add(progressListItems.get(i));
                 textView_listTitles[i].setText(progressListItems.get(i).getTitle());
                 textView_listDeadlines[i].setText(progressListItems.get(i).getDeadline());
                 textView_listRewards[i].setText(progressListItems.get(i).getReward());
@@ -251,8 +271,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         }
     }
     private void setInitJudgeList(ArrayList<JudgeListItem> judgeListItems){
+        judgeShowListItems = new ArrayList<JudgeListItem>();
         if(judgeListItems.size() <= linearLayout_lists.length){
             for(int i = 0; i< judgeListItems.size(); i++){
+                judgeShowListItems.add(judgeListItems.get(i));
                 textView_listTitles[i].setText(judgeListItems.get(i).getTitle());
                 textView_listDeadlines[i].setText(judgeListItems.get(i).getDeadline());
                 textView_listRewards[i].setText(judgeListItems.get(i).getReward());
@@ -260,6 +282,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         }
         else{
             for(int i=0;i<linearLayout_lists.length;i++){
+                judgeShowListItems.add(judgeListItems.get(i));
                 textView_listTitles[i].setText(judgeListItems.get(i).getTitle());
                 textView_listDeadlines[i].setText(judgeListItems.get(i).getDeadline());
                 textView_listRewards[i].setText(judgeListItems.get(i).getReward());
@@ -267,8 +290,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         }
     }
     private void setInitEndList(ArrayList<EndListItem> endListItems){
+        endShowListItems = new ArrayList<EndListItem>();
         if(endListItems.size() <= linearLayout_lists.length){
             for(int i = 0; i< endListItems.size(); i++){
+                endShowListItems.add(endListItems.get(i));
                 textView_listTitles[i].setText(endListItems.get(i).getTitle());
                 textView_listDeadlines[i].setText(endListItems.get(i).getDeadline());
                 textView_listRewards[i].setText(endListItems.get(i).getReward());
@@ -276,6 +301,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         }
         else{
             for(int i=0;i<linearLayout_lists.length;i++){
+                endShowListItems.add(endListItems.get(i));
                 textView_listTitles[i].setText(endListItems.get(i).getTitle());
                 textView_listDeadlines[i].setText(endListItems.get(i).getDeadline());
                 textView_listRewards[i].setText(endListItems.get(i).getReward());

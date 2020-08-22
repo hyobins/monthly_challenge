@@ -27,6 +27,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import Project.EndListItem;
+import Project.JudgeListItem;
+import Project.ProgressListItem;
+
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     ActivityMainBinding binding;
@@ -139,18 +143,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 switch (document.get("state").toString()){
                                     case "진행중":
-                                        progressListItem = new ProgressListItem(document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                        progressListItem = new ProgressListItem(document.getId(),document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
                                                 ,document.get("reward").toString());
                                         progressListItems.add(progressListItem);
 
                                         break;
                                     case "심사중":
-                                        judgeListItem = new JudgeListItem(document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                        judgeListItem = new JudgeListItem(document.getId(), document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
                                                 ,document.get("reward").toString());
                                         judgeListItems.add(judgeListItem);
                                         break;
                                     case "종료":
-                                        endListItem = new EndListItem(document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                        endListItem = new EndListItem(document.getId(), document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
                                                 ,document.get("reward").toString());
                                         endListItems.add(endListItem);
                                         break;
