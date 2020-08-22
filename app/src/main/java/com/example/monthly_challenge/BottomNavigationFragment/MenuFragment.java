@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
+import Project.Team.TeamListAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -96,6 +97,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+//    TeamListAdapter teamListAdapter = new TeamListAdapter(this, )
 
 
     @Nullable
