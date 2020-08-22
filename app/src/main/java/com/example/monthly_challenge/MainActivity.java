@@ -3,9 +3,7 @@ package com.example.monthly_challenge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.monthly_challenge.BottomNavigationFragment.*;
@@ -19,7 +17,6 @@ import com.example.monthly_challenge.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -27,9 +24,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import Project.EndListItem;
-import Project.JudgeListItem;
-import Project.ProgressListItem;
+import Project.ProjectListItem;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -42,18 +37,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private SettingFragment settingFragment;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
-    private DrawerLayout drawerLayout;
-    private NavigationView drawerNavigationView;
     private MenuItem projectIng;
     private View header;
-    static ArrayList<ProgressListItem> progressListItems;
-    static ArrayList<JudgeListItem> judgeListItems;
-    static ArrayList<EndListItem> endListItems;
+    static ArrayList<ProjectListItem> progressListItems;
+    static ArrayList<ProjectListItem> judgeListItems;
+    static ArrayList<ProjectListItem> endListItems;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    ProgressListItem progressListItem;
-    JudgeListItem judgeListItem;
-    EndListItem endListItem;
+    ProjectListItem progressListItem;
+    ProjectListItem judgeListItem;
+    ProjectListItem endListItem;
 
     SimpleDateFormat simpleDateFormat;
 //    Map<String, Object> project = new HashMap<>();
@@ -77,29 +70,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         endListItems = new ArrayList();
         simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
-        drawerLayout = binding.drawerLayout;
-        drawerNavigationView = binding.navView;
-        drawerNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                projectIng = drawerNavigationView.inflateMenu(R.menu.drawer_nav_menu)
-                switch (item.getItemId()){
-                    case R.id.project:
-//                        if(projectIng.isVisible()) projectIng.setVisible(false);
-//                        else projectIng.setVisible(true);
-                        break;
-                    case R.id.project_ing:
-//                        projectIng.setVisible(true);
-                        transaction.replace(R.id.main_layout, menuFragment).commitAllowingStateLoss();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-
-                        break;
-
-                }
-                return false;
-            }
-        });
 //        team.put("team_name","testteam");
 //        team.put("max_developers",null);
 //        team.put("max_designers",null);
@@ -143,18 +113,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 switch (document.get("state").toString()){
                                     case "진행중":
-                                        progressListItem = new ProgressListItem(document.getId(),document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                        progressListItem = new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
                                                 ,document.get("reward").toString());
                                         progressListItems.add(progressListItem);
 
                                         break;
                                     case "심사중":
-                                        judgeListItem = new JudgeListItem(document.getId(), document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                        judgeListItem = new ProjectListItem(document.getId(), document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
                                                 ,document.get("reward").toString());
                                         judgeListItems.add(judgeListItem);
                                         break;
                                     case "종료":
-                                        endListItem = new EndListItem(document.getId(), document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                        endListItem = new ProjectListItem(document.getId(), document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
                                                 ,document.get("reward").toString());
                                         endListItems.add(endListItem);
                                         break;
@@ -181,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 transaction.replace(R.id.main_layout, homeFragment).commitAllowingStateLoss();
                 return true;
             case R.id.navigation_menu:
-                drawerLayout.openDrawer(GravityCompat.START);
+                transaction.replace(R.id.main_layout,menuFragment).commitAllowingStateLoss();
                 return true;
             case R.id.navigation_alarm:
                 transaction.replace(R.id.main_layout, alarmFragment).commitAllowingStateLoss();
@@ -193,13 +163,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
-    static public ArrayList<ProgressListItem> getProgressListItem(){
+    static public ArrayList<ProjectListItem> getProgressListItem(){
         return progressListItems;
     }
-    static public ArrayList<JudgeListItem> getJudgeListItem(){
+    static public ArrayList<ProjectListItem> getJudgeListItem(){
         return judgeListItems;
     }
-    static public ArrayList<EndListItem> getEndListItem(){
+    static public ArrayList<ProjectListItem> getEndListItem(){
         return endListItems;
     }
 }

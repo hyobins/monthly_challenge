@@ -1,12 +1,16 @@
 package com.example.monthly_challenge.BottomNavigationFragment;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -14,54 +18,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import Project.EndListItem;
-import Project.JudgeListItem;
-import Project.ProgressListItem;
 import com.example.monthly_challenge.MainActivity;
 import com.example.monthly_challenge.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-import Project.Team.TeamListAdapter;
+import Project.ProjectListAdapter;
+import Project.ProjectListItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MenuFragment extends Fragment implements View.OnClickListener {
+    Context context;
     ViewGroup viewGroup;
+    @BindView(R.id.categoryView) LinearLayout categoryView;
     @BindView(R.id.projectInfoView) ScrollView projectInfoView;
     @BindView(R.id.projectIngView) ScrollView projectIngView;
+    @BindView(R.id.linearLayout_projectCat) LinearLayout linearLayout_projectCat;
+    @BindView(R.id.linearLayout_portfolioCat) LinearLayout linearLayout_portfolioCat;
     @BindView(R.id.infoLayout) LinearLayout infoLayout;
     @BindView(R.id.submitLayout) LinearLayout submitLayout;
     @BindView(R.id.matchLayout) LinearLayout matchLayout;
-    @BindView(R.id.linearLayout_list0) LinearLayout linearLayout_list0;
-    @BindView(R.id.linearLayout_list1) LinearLayout linearLayout_list1;
-    @BindView(R.id.linearLayout_list2) LinearLayout linearLayout_list2;
-    @BindView(R.id.linearLayout_list3) LinearLayout linearLayout_list3;
-    @BindView(R.id.linearLayout_list4) LinearLayout linearLayout_list4;
-    @BindView(R.id.linearLayout_list5) LinearLayout linearLayout_list5;
-    LinearLayout[] linearLayout_lists;
-    @BindView(R.id.textView_listTitle0) TextView textView_listTitle0;
-    @BindView(R.id.textView_listTitle1) TextView textView_listTitle1;
-    @BindView(R.id.textView_listTitle2) TextView textView_listTitle2;
-    @BindView(R.id.textView_listTitle3) TextView textView_listTitle3;
-    @BindView(R.id.textView_listTitle4) TextView textView_listTitle4;
-    @BindView(R.id.textView_listTitle5) TextView textView_listTitle5;
-    TextView[] textView_listTitles;
-    @BindView(R.id.textView_listDeadline0) TextView textView_listDeadline0;
-    @BindView(R.id.textView_listDeadline1) TextView textView_listDeadline1;
-    @BindView(R.id.textView_listDeadline2) TextView textView_listDeadline2;
-    @BindView(R.id.textView_listDeadline3) TextView textView_listDeadline3;
-    @BindView(R.id.textView_listDeadline4) TextView textView_listDeadline4;
-    @BindView(R.id.textView_listDeadline5) TextView textView_listDeadline5;
-    TextView[] textView_listDeadlines;
-    @BindView(R.id.textView_listReward0) TextView textView_listReward0;
-    @BindView(R.id.textView_listReward1) TextView textView_listReward1;
-    @BindView(R.id.textView_listReward2) TextView textView_listReward2;
-    @BindView(R.id.textView_listReward3) TextView textView_listReward3;
-    @BindView(R.id.textView_listReward4) TextView textView_listReward4;
-    @BindView(R.id.textView_listReward5) TextView textView_listReward5;
-    TextView[] textView_listRewards;
 
     @BindView(R.id.infoView) View infoView;
     @BindView(R.id.matchView) View matchView;
@@ -86,14 +64,17 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.textView_judge) TextView textView_judge;
     @BindView(R.id.textView_end) TextView textView_end;
 
+    @BindView(R.id.listView_projectList)
+    ListView listview_projectList;
 
-    ArrayList<ProgressListItem> progressListItems;
-    ArrayList<JudgeListItem> judgeListItems;
-    ArrayList<EndListItem> endListItems;
 
-    ArrayList<ProgressListItem> progressShowListItems;
-    ArrayList<JudgeListItem> judgeShowListItems;
-    ArrayList<EndListItem> endShowListItems;
+    ArrayList<ProjectListItem> progressListItems;
+    ArrayList<ProjectListItem> judgeListItems;
+    ArrayList<ProjectListItem> endListItems;
+
+    ProjectListAdapter progressProjectListAdapter;
+    ProjectListAdapter judgeProjectListAdapter;
+    ProjectListAdapter endProjectListAdapter;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -104,21 +85,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_menu, container, false);
+        context = container.getContext();
         ButterKnife.bind(this, viewGroup);
-        projectInfoView = viewGroup.findViewById(R.id.projectInfoView);
-        projectIngView = viewGroup.findViewById(R.id.projectIngView);
-
-
-        linearLayout_lists = new LinearLayout[]{linearLayout_list0,linearLayout_list1,linearLayout_list3,
-                                                linearLayout_list4,linearLayout_list5};
-
-        textView_listTitles = new TextView[]{textView_listTitle0,textView_listTitle1,textView_listTitle2,
-                                            textView_listTitle3,textView_listTitle4,textView_listTitle5};
-        textView_listDeadlines = new TextView[]{textView_listDeadline0,textView_listDeadline1,
-                                    textView_listDeadline3,textView_listDeadline4,textView_listDeadline5};
-        textView_listRewards = new TextView[]{textView_listReward0,textView_listReward1,textView_listReward2,
-                                    textView_listReward3,textView_listReward4,textView_listReward5};
-
 
         prevLayout = infoLayout;
         prevView = infoView;
@@ -127,14 +95,45 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         progressListItems = MainActivity.getProgressListItem();
         judgeListItems = MainActivity.getJudgeListItem();
         endListItems = MainActivity.getEndListItem();
-//        progressShowListItems = new ArrayList<ProgressListItem>();
+//        projectShowListItems = new ArrayList<ProjectListItem>();
 //        judgeShowListItems = new ArrayList<JudgeListItem>();
 //        endShowListItems = new ArrayList<EndListItem>();
-//        System.out.println(progressListItems);
 
-        for(int i=0;i<linearLayout_lists.length;i++){
-            linearLayout_lists[i].setOnClickListener(this);
-        }
+
+        progressProjectListAdapter = new ProjectListAdapter(context, progressListItems);
+        judgeProjectListAdapter = new ProjectListAdapter(context, judgeListItems);
+        endProjectListAdapter = new ProjectListAdapter(context, endListItems);
+        listview_projectList.setAdapter(progressProjectListAdapter);
+
+        listview_projectList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                projectIngView.setVisibility(View.GONE);
+                projectInfoView.setVisibility(View.VISIBLE);
+                switch (stateTab){
+                    case "진행중" :
+                        titleText.setText(progressProjectListAdapter.getItem(position).getTitle());
+                        deadlineText.setText(progressProjectListAdapter.getItem(position).getDeadline());
+                        rewardText.setText(progressProjectListAdapter.getItem(position).getReward());
+                        break;
+                    case "심사중" :
+                        titleText.setText(judgeProjectListAdapter.getItem(position).getTitle());
+                        deadlineText.setText(judgeProjectListAdapter.getItem(position).getDeadline());
+                        rewardText.setText(judgeProjectListAdapter.getItem(position).getReward());
+                        break;
+                    case "종료" :
+                        titleText.setText(endProjectListAdapter.getItem(position).getTitle());
+                        deadlineText.setText(endProjectListAdapter.getItem(position).getDeadline());
+                        rewardText.setText(endProjectListAdapter.getItem(position).getReward());
+                        break;
+
+                }
+
+
+            }
+        });
+
+        linearLayout_projectCat.setOnClickListener(this);
         infoText.setOnClickListener(this);
         matchText.setOnClickListener(this);
         submitText.setOnClickListener(this);
@@ -142,7 +141,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         textView_progress.setOnClickListener(this);
         textView_judge.setOnClickListener(this);
         textView_end.setOnClickListener(this);
-        setInitProgressList(progressListItems);
 
 
 //        db.collection("project")
@@ -179,49 +177,29 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     }
 
 
+
     @Override
     public void onClick(View v) {
         TextView textView;
         switch (v.getId()){
+            case R.id.linearLayout_projectCat:
+                categoryView.setVisibility(View.GONE);
+                projectIngView.setVisibility(View.VISIBLE);
+                break;
+
             case R.id.textView_progress:
-                setInitProgressList(progressListItems);
+                listview_projectList.setAdapter(progressProjectListAdapter);
+                stateTab = "진행중";
                 break;
             case R.id.textView_judge:
-                setInitJudgeList(judgeListItems);
+                listview_projectList.setAdapter(judgeProjectListAdapter);
+                stateTab = "심사중";
                 break;
             case R.id.textView_end:
-                setInitEndList(endListItems);
+                listview_projectList.setAdapter(endProjectListAdapter);
+                stateTab = "종료";
                 break;
-            case R.id.linearLayout_list0:
-                textView = textView_listTitle0;
-                if(textView.getText().equals("")) break;
-                onClickListItem(0);
-                break;
-            case R.id.linearLayout_list1:
-                textView = textView_listTitle1;
-                if(textView.getText().equals("")) break;
-                onClickListItem(1);
-                break;
-            case R.id.linearLayout_list2:
-                textView = textView_listTitle2;
-                if(textView.getText().equals("")) break;
-                onClickListItem(2);
-                break;
-            case R.id.linearLayout_list3:
-                textView = textView_listTitle3;
-                if(textView.getText().equals("")) break;
-                onClickListItem(3);
-                break;
-            case R.id.linearLayout_list4:
-                textView = textView_listTitle4;
-                if(textView.getText().equals("")) break;
-                onClickListItem(4);
-                break;
-            case R.id.linearLayout_list5:
-                textView = textView_listTitle5;
-                if(textView.getText().equals("")) break;
-                onClickListItem(5);
-                break;
+
             case R.id.submitText:
 
                 prevSettingAndChange(submitText,submitView,submitLayout);
@@ -245,70 +223,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
         }
     }
-    private void onClickListItem(int i){
-        projectIngView.setVisibility(View.GONE);
-        projectInfoView.setVisibility(View.VISIBLE);
-        titleText.setText(textView_listTitles[i].getText().toString());
-        deadlineText.setText(textView_listDeadlines[i].getText().toString());
-        rewardText.setText(textView_listRewards[i].getText().toString());
-    }
 
-    private void setInitProgressList(ArrayList<ProgressListItem> progressListItems){
-        progressShowListItems = new ArrayList<ProgressListItem>();
-        if(progressListItems.size() <= linearLayout_lists.length){
-            for(int i = 0; i< progressListItems.size(); i++){
-                progressShowListItems.add(progressListItems.get(i));
-                textView_listTitles[i].setText(progressListItems.get(i).getTitle());
-                textView_listDeadlines[i].setText(progressListItems.get(i).getDeadline());
-                textView_listRewards[i].setText(progressListItems.get(i).getReward());
-            }
-        }
-        else{
-            for(int i=0;i<linearLayout_lists.length;i++){
-                progressShowListItems.add(progressListItems.get(i));
-                textView_listTitles[i].setText(progressListItems.get(i).getTitle());
-                textView_listDeadlines[i].setText(progressListItems.get(i).getDeadline());
-                textView_listRewards[i].setText(progressListItems.get(i).getReward());
-            }
-        }
-    }
-    private void setInitJudgeList(ArrayList<JudgeListItem> judgeListItems){
-        judgeShowListItems = new ArrayList<JudgeListItem>();
-        if(judgeListItems.size() <= linearLayout_lists.length){
-            for(int i = 0; i< judgeListItems.size(); i++){
-                judgeShowListItems.add(judgeListItems.get(i));
-                textView_listTitles[i].setText(judgeListItems.get(i).getTitle());
-                textView_listDeadlines[i].setText(judgeListItems.get(i).getDeadline());
-                textView_listRewards[i].setText(judgeListItems.get(i).getReward());
-            }
-        }
-        else{
-            for(int i=0;i<linearLayout_lists.length;i++){
-                judgeShowListItems.add(judgeListItems.get(i));
-                textView_listTitles[i].setText(judgeListItems.get(i).getTitle());
-                textView_listDeadlines[i].setText(judgeListItems.get(i).getDeadline());
-                textView_listRewards[i].setText(judgeListItems.get(i).getReward());
-            }
-        }
-    }
-    private void setInitEndList(ArrayList<EndListItem> endListItems){
-        endShowListItems = new ArrayList<EndListItem>();
-        if(endListItems.size() <= linearLayout_lists.length){
-            for(int i = 0; i< endListItems.size(); i++){
-                endShowListItems.add(endListItems.get(i));
-                textView_listTitles[i].setText(endListItems.get(i).getTitle());
-                textView_listDeadlines[i].setText(endListItems.get(i).getDeadline());
-                textView_listRewards[i].setText(endListItems.get(i).getReward());
-            }
-        }
-        else{
-            for(int i=0;i<linearLayout_lists.length;i++){
-                endShowListItems.add(endListItems.get(i));
-                textView_listTitles[i].setText(endListItems.get(i).getTitle());
-                textView_listDeadlines[i].setText(endListItems.get(i).getDeadline());
-                textView_listRewards[i].setText(endListItems.get(i).getReward());
-            }
-        }
-    }
+
+
 
 }
