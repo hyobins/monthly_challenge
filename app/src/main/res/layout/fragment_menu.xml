@@ -724,9 +724,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="#FFFFFF"
+                android:orientation="vertical"
                 android:visibility="gone">
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/matchLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"></LinearLayout>
 
         </LinearLayout>
     </ScrollView>
