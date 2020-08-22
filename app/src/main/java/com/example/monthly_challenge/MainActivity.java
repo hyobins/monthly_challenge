@@ -3,41 +3,28 @@ package com.example.monthly_challenge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.monthly_challenge.BottomNavigationFragment.*;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.health.SystemHealthManager;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.monthly_challenge.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.Timestamp;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import butterknife.BindView;
+import Project.ProjectListItem;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -50,12 +37,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private SettingFragment settingFragment;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
-    private DrawerLayout drawerLayout;
-    private NavigationView drawerNavigationView;
     private MenuItem projectIng;
     private View header;
-    static ArrayList<ListItem> listItems;
+    static ArrayList<ProjectListItem> progressListItems;
+    static ArrayList<ProjectListItem> judgeListItems;
+    static ArrayList<ProjectListItem> endListItems;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    ProjectListItem progressListItem;
+    ProjectListItem judgeListItem;
+    ProjectListItem endListItem;
 
     SimpleDateFormat simpleDateFormat;
 //    Map<String, Object> project = new HashMap<>();
@@ -74,32 +65,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.main_layout, homeFragment).commitAllowingStateLoss();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        listItems = new ArrayList();
+        progressListItems = new ArrayList();
+        judgeListItems = new ArrayList();
+        endListItems = new ArrayList();
         simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
-        drawerLayout = binding.drawerLayout;
-        drawerNavigationView = binding.navView;
-        drawerNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                projectIng = drawerNavigationView.inflateMenu(R.menu.drawer_nav_menu)
-                switch (item.getItemId()){
-                    case R.id.project:
-//                        if(projectIng.isVisible()) projectIng.setVisible(false);
-//                        else projectIng.setVisible(true);
-                        break;
-                    case R.id.project_ing:
-//                        projectIng.setVisible(true);
-                        transaction.replace(R.id.main_layout, menuFragment).commitAllowingStateLoss();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-
-                        break;
-
-                }
-                return false;
-            }
-        });
 //        team.put("team_name","testteam");
 //        team.put("max_developers",null);
 //        team.put("max_designers",null);
@@ -132,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //                        Log.w(null, "Error adding document", e);
 //                    }
 //                });
+
+
         db.collection("project")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -139,10 +111,27 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                ListItem listItem = new ListItem(document.get("title").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
-                                                                ,document.get("reward").toString());
-                                System.out.println(listItem);
-                                listItems.add(listItem);
+                                switch (document.get("state").toString()){
+                                    case "진행중":
+                                        progressListItem = new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                                ,document.get("reward").toString());
+                                        progressListItems.add(progressListItem);
+
+                                        break;
+                                    case "심사중":
+                                        judgeListItem = new ProjectListItem(document.getId(), document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                                ,document.get("reward").toString());
+                                        judgeListItems.add(judgeListItem);
+                                        break;
+                                    case "종료":
+                                        endListItem = new ProjectListItem(document.getId(), document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                                ,document.get("reward").toString());
+                                        endListItems.add(endListItem);
+                                        break;
+
+
+                                }
+
 //                                Log.d(TAG, document.getId() + " => " + document.getData());
                             }
                         } else {
@@ -151,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     }
                 });
 
-        System.out.println(listItems);
+        System.out.println(progressListItems);
     }
 
     @Override
@@ -162,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 transaction.replace(R.id.main_layout, homeFragment).commitAllowingStateLoss();
                 return true;
             case R.id.navigation_menu:
-                drawerLayout.openDrawer(GravityCompat.START);
+                transaction.replace(R.id.main_layout,menuFragment).commitAllowingStateLoss();
                 return true;
             case R.id.navigation_alarm:
                 transaction.replace(R.id.main_layout, alarmFragment).commitAllowingStateLoss();
@@ -174,7 +163,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
-    static public ArrayList<ListItem> getListItem(){
-        return listItems;
+    static public ArrayList<ProjectListItem> getProgressListItem(){
+        return progressListItems;
+    }
+    static public ArrayList<ProjectListItem> getJudgeListItem(){
+        return judgeListItems;
+    }
+    static public ArrayList<ProjectListItem> getEndListItem(){
+        return endListItems;
     }
 }
