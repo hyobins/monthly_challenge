@@ -1,10 +1,10 @@
 package com.example.monthly_challenge;
 
-public class ListItem {
+public class ProgressListItem {
     private String title;
     private String deadline;
     private String reward;
-    public ListItem(String title, String deadline, String reward) {
+    public ProgressListItem(String title, String deadline, String reward) {
         this.title = title;
         this.deadline = deadline;
         this.reward = reward;
@@ -21,4 +21,5 @@ public class ListItem {
     public String getReward() {
         return this.reward;
     }
+
 }
