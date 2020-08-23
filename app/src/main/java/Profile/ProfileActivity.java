@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.monthly_challenge.R;
 import com.example.monthly_challenge.databinding.ActivityProfileBinding;
@@ -45,12 +46,24 @@ public class ProfileActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     if(document != null){
+                        binding.userPosition.setText(document.getString("position"));
                         binding.name.setText(document.getString("name"));
                         binding.email.setText(document.getString("email"));
+
+                        binding.userIntroduce.setText(document.getString("introduce"));
+                        binding.userInterest.setText(document.getString("interest"));
+                        binding.userUrl.setText(document.getString("profile_url"));
+
                     }
                 }
             }
         });
 
     }
+
+    public void BackButton(View v){
+        finish();
+    }
+
+
 }
