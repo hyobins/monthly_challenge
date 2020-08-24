@@ -21,15 +21,15 @@
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/my_project"
-        android:text="My 프로젝트"
-        android:textAllCaps="false"
+        android:id="@+id/my_point"
+        android:text="내 포인트"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/team_building"
-        android:text="팀빌딩"
+        android:id="@+id/my_project"
+        android:text="My 프로젝트"
+        android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

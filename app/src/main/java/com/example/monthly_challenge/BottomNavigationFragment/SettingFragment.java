@@ -12,27 +12,31 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.monthly_challenge.R;
+import com.google.firebase.auth.FirebaseAuth;
 
-import Login.IndivSignupActivity;
+import Login.LoginActivity;
+import Profile.MyprojectActivity;
 import Profile.ProfileActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class SettingFragment extends Fragment implements View.OnClickListener{
     ViewGroup viewGroup;
-    Button profile, my_project, team_building, logout;
+    @BindView(R.id.profile) Button profile;
+    @BindView(R.id.my_project) Button my_project;
+    @BindView(R.id.my_point) Button my_point;
+    @BindView(R.id.logout) Button logout;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_setting, container, false);
+        ButterKnife.bind(this, viewGroup);
 
-        profile = viewGroup.findViewById(R.id.profile);
         profile.setOnClickListener(this);
-        my_project = viewGroup.findViewById(R.id.my_project);
         my_project.setOnClickListener(this);
-        team_building = viewGroup.findViewById(R.id.team_building);
-        team_building.setOnClickListener(this);
-        logout = viewGroup.findViewById(R.id.logout);
+        my_point.setOnClickListener(this);
         logout.setOnClickListener(this);
 
         return viewGroup;
@@ -44,6 +48,15 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             case R.id.profile:
                 Intent intent = new Intent(getActivity() , ProfileActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.my_project:
+                Intent myproject_intent = new Intent(getActivity(), MyprojectActivity.class);
+                startActivity(myproject_intent);
+                break;
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent logout_intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(logout_intent);
                 break;
         }
     }
