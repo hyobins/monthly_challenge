@@ -1,6 +1,7 @@
 package com.example.monthly_challenge.BottomNavigationFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.view.menu.MenuAdapter;
 import androidx.fragment.app.Fragment;
 
 import com.example.monthly_challenge.MainActivity;
@@ -24,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
+import Project.ProjectDetailActivity;
 import Project.ProjectListAdapter;
 import Project.ProjectListItem;
 import butterknife.BindView;
@@ -33,32 +36,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     Context context;
     ViewGroup viewGroup;
     @BindView(R.id.categoryView) LinearLayout categoryView;
-    @BindView(R.id.projectInfoView) ScrollView projectInfoView;
+
     @BindView(R.id.projectIngView) ScrollView projectIngView;
     @BindView(R.id.linearLayout_projectCat) LinearLayout linearLayout_projectCat;
     @BindView(R.id.linearLayout_portfolioCat) LinearLayout linearLayout_portfolioCat;
-    @BindView(R.id.infoLayout) LinearLayout infoLayout;
-    @BindView(R.id.submitLayout) LinearLayout submitLayout;
-    @BindView(R.id.matchLayout) LinearLayout matchLayout;
-
-    @BindView(R.id.infoView) View infoView;
-    @BindView(R.id.matchView) View matchView;
-    @BindView(R.id.submitView) View submitView;
-    @BindView(R.id.infoText) TextView infoText;
-    @BindView(R.id.matchText) TextView matchText;
-    @BindView(R.id.submitText) TextView submitText;
-
-    LinearLayout prevLayout;
-    View prevView;
-    TextView prevText;
 
     String stateTab = "진행중";
-
-    @BindView(R.id.backButton) ImageView backButton;
-
-    @BindView(R.id.titleText) TextView titleText;
-    @BindView(R.id.deadlineText) TextView deadlineText;
-    @BindView(R.id.rewardText) TextView rewardText;
 
     @BindView(R.id.textView_progress) TextView textView_progress;
     @BindView(R.id.textView_judge) TextView textView_judge;
@@ -76,9 +59,9 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     ProjectListAdapter judgeProjectListAdapter;
     ProjectListAdapter endProjectListAdapter;
 
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-//    TeamListAdapter teamListAdapter = new TeamListAdapter(this, )
 
 
     @Nullable
@@ -88,16 +71,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         context = container.getContext();
         ButterKnife.bind(this, viewGroup);
 
-        prevLayout = infoLayout;
-        prevView = infoView;
-        prevText = infoText;
 
         progressListItems = MainActivity.getProgressListItem();
         judgeListItems = MainActivity.getJudgeListItem();
         endListItems = MainActivity.getEndListItem();
-//        projectShowListItems = new ArrayList<ProjectListItem>();
-//        judgeShowListItems = new ArrayList<JudgeListItem>();
-//        endShowListItems = new ArrayList<EndListItem>();
 
 
         progressProjectListAdapter = new ProjectListAdapter(context, progressListItems);
@@ -108,36 +85,32 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         listview_projectList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                projectIngView.setVisibility(View.GONE);
-                projectInfoView.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(getActivity(), ProjectDetailActivity.class);
                 switch (stateTab){
                     case "진행중" :
-                        titleText.setText(progressProjectListAdapter.getItem(position).getTitle());
-                        deadlineText.setText(progressProjectListAdapter.getItem(position).getDeadline());
-                        rewardText.setText(progressProjectListAdapter.getItem(position).getReward());
+                        intent.putExtra("title",progressProjectListAdapter.getItem(position).getTitle());
+                        intent.putExtra("deadline",progressProjectListAdapter.getItem(position).getDeadline());
+                        intent.putExtra("reward",progressProjectListAdapter.getItem(position).getReward());
                         break;
                     case "심사중" :
-                        titleText.setText(judgeProjectListAdapter.getItem(position).getTitle());
-                        deadlineText.setText(judgeProjectListAdapter.getItem(position).getDeadline());
-                        rewardText.setText(judgeProjectListAdapter.getItem(position).getReward());
+                        intent.putExtra("title",judgeProjectListAdapter.getItem(position).getTitle());
+                        intent.putExtra("deadline",judgeProjectListAdapter.getItem(position).getDeadline());
+                        intent.putExtra("reward",judgeProjectListAdapter.getItem(position).getReward());
                         break;
                     case "종료" :
-                        titleText.setText(endProjectListAdapter.getItem(position).getTitle());
-                        deadlineText.setText(endProjectListAdapter.getItem(position).getDeadline());
-                        rewardText.setText(endProjectListAdapter.getItem(position).getReward());
+                        intent.putExtra("title",endProjectListAdapter.getItem(position).getTitle());
+                        intent.putExtra("deadline",endProjectListAdapter.getItem(position).getDeadline());
+                        intent.putExtra("reward",endProjectListAdapter.getItem(position).getReward());
                         break;
 
                 }
+                startActivity(intent);
 
 
             }
         });
 
         linearLayout_projectCat.setOnClickListener(this);
-        infoText.setOnClickListener(this);
-        matchText.setOnClickListener(this);
-        submitText.setOnClickListener(this);
-        backButton.setOnClickListener(this);
         textView_progress.setOnClickListener(this);
         textView_judge.setOnClickListener(this);
         textView_end.setOnClickListener(this);
@@ -161,21 +134,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
         return viewGroup;
     }
-    private void prevSettingAndChange(TextView textView, View view, LinearLayout linearLayout){
-        prevText.setTextColor(Color.parseColor("#808080"));
-        prevView.setVisibility(View.INVISIBLE);
-        prevLayout.setVisibility(View.GONE);
-
-        textView.setTextColor(Color.parseColor("#000000"));
-        view.setVisibility(View.VISIBLE);
-        linearLayout.setVisibility(View.VISIBLE);
-
-        prevText = textView;
-        prevView = view;
-        prevLayout = linearLayout;
-
-    }
-
 
 
     @Override
@@ -198,27 +156,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
             case R.id.textView_end:
                 listview_projectList.setAdapter(endProjectListAdapter);
                 stateTab = "종료";
-                break;
-
-            case R.id.submitText:
-
-                prevSettingAndChange(submitText,submitView,submitLayout);
-
-                break;
-            case R.id.matchText:
-
-                prevSettingAndChange(matchText,matchView,matchLayout);
-
-                break;
-            case R.id.infoText:
-
-                prevSettingAndChange(infoText,infoView, infoLayout);
-
-                break;
-
-            case R.id.backButton:
-                projectIngView.setVisibility(View.VISIBLE);
-                projectInfoView.setVisibility(View.GONE);
                 break;
 
         }

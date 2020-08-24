@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     ActivityMainBinding binding;
     BottomNavigationView bottomNavigationView;
     Context context = this;
+    String testId = "";
     private HomeFragment homeFragment;
     private MenuFragment menuFragment;
     private AlarmFragment alarmFragment;
