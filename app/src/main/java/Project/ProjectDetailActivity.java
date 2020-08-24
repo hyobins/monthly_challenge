@@ -62,6 +62,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         binding.submitText.setOnClickListener(this);
         binding.matchText.setOnClickListener(this);
         binding.infoText.setOnClickListener(this);
+        binding.buttonCreatTeam.setOnClickListener(this);
         prevLayout = binding.infoLayout;
         prevView = binding.infoView;
         prevText = binding.infoText;
@@ -114,6 +115,10 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
                 prevSettingAndChange(binding.infoText,binding.infoView, binding.infoLayout);
 
                 break;
+            case R.id.button_creatTeam:
+
+                break;
+
         }
     }
 

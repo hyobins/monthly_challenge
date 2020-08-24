@@ -97,14 +97,6 @@ public class TeamListAdapter extends BaseAdapter {
                 imageView_designer3.setImageResource(R.drawable.apply_user);
                 break;
         }
-//
-//        ImageView imageView = (ImageView)view.findViewById(R.id.poster);
-//        TextView movieName = (TextView)view.findViewById(R.id.movieName);
-//        TextView grade = (TextView)view.findViewById(R.id.grade);
-//
-//        imageView.setImageResource(sample.get(position).getPoster());
-//        movieName.setText(sample.get(position).getMovieName());
-//        grade.setText(sample.get(position).getGrade());
 
         return view;
     }
