@@ -88,16 +88,19 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                 Intent intent = new Intent(getActivity(), ProjectDetailActivity.class);
                 switch (stateTab){
                     case "진행중" :
+                        intent.putExtra("projectId",progressProjectListAdapter.getItem(position).getProjectId());
                         intent.putExtra("title",progressProjectListAdapter.getItem(position).getTitle());
                         intent.putExtra("deadline",progressProjectListAdapter.getItem(position).getDeadline());
                         intent.putExtra("reward",progressProjectListAdapter.getItem(position).getReward());
                         break;
                     case "심사중" :
+                        intent.putExtra("projectId",judgeProjectListAdapter.getItem(position).getProjectId());
                         intent.putExtra("title",judgeProjectListAdapter.getItem(position).getTitle());
                         intent.putExtra("deadline",judgeProjectListAdapter.getItem(position).getDeadline());
                         intent.putExtra("reward",judgeProjectListAdapter.getItem(position).getReward());
                         break;
                     case "종료" :
+                        intent.putExtra("projectId",endProjectListAdapter.getItem(position).getProjectId());
                         intent.putExtra("title",endProjectListAdapter.getItem(position).getTitle());
                         intent.putExtra("deadline",endProjectListAdapter.getItem(position).getDeadline());
                         intent.putExtra("reward",endProjectListAdapter.getItem(position).getReward());

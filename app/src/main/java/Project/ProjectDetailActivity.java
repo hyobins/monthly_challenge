@@ -1,8 +1,10 @@
 package Project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,16 +14,37 @@ import android.widget.TextView;
 
 import com.example.monthly_challenge.R;
 import com.example.monthly_challenge.databinding.ActivityProjectdetailBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.okhttp.internal.Internal;
+
+import java.util.ArrayList;
+
+import Project.Team.TeamListAdapter;
+import Project.Team.TeamListItem;
 
 public class ProjectDetailActivity extends AppCompatActivity implements View.OnClickListener {
+    Context context = this;
     Intent intent;
     ActivityProjectdetailBinding binding;
-    String title;
-    String deadline;
-    String reward;
+    String projectId;
     LinearLayout prevLayout;
     View prevView;
     TextView prevText;
+
+    String teamName;
+    ArrayList<String> teamNames;
+    TeamListItem teamListItem;
+    ArrayList<TeamListItem> teamListItems;
+    TeamListAdapter adapter;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -30,6 +53,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         binding.setActivity(this);
 
         intent = getIntent();
+        projectId = intent.getStringExtra("projectId");
         binding.titleText.setText(intent.getStringExtra("title"));
         binding.deadlineText.setText(intent.getStringExtra("deadline"));
         binding.rewardText.setText(intent.getStringExtra("reward"));
@@ -42,6 +66,30 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         prevView = binding.infoView;
         prevText = binding.infoText;
 
+        teamNames = new ArrayList<String>();
+        teamListItems = new ArrayList<TeamListItem>();
+
+        db.collection("project")
+                .document(projectId)
+                .collection("team")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                teamListItem = new TeamListItem(document.getId(), Integer.valueOf(document.get("max_designers").toString()),Integer.valueOf(document.get("max_developers").toString())
+                                                                ,Integer.valueOf(document.get("apply_designers").toString()),Integer.valueOf(document.get("apply_developers").toString()));
+                                teamListItems.add(teamListItem);
+                            }
+                            adapter = new TeamListAdapter(context, teamListItems);
+                            binding.listViewTeamList.setAdapter(adapter);
+                        }
+                        else{
+
+                        }
+                    }
+                });
 
     }
 
@@ -83,4 +131,5 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         prevLayout = linearLayout;
 
     }
+
 }
