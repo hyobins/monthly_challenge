@@ -43,7 +43,7 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/textView_developers"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -57,7 +57,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView_developer1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -65,7 +65,7 @@
                 app:srcCompat="@drawable/no_user" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imageView_developer2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -73,7 +73,7 @@
                 app:srcCompat="@drawable/no_user" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView_developer3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -98,7 +98,7 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/textView_designers"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -112,21 +112,21 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imageView_designer1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/no_user" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/imageView_designer2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/no_user" />
 
             <ImageView
-                android:id="@+id/imageView11"
+                android:id="@+id/imageView_designer3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
