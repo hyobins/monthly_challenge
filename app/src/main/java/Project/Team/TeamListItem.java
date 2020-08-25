@@ -39,4 +39,12 @@ public class TeamListItem {
     public String getOpenchat_url() {
         return this.openchat_url;
     }
+
+    public void setApply_developers(int apply_developers) {
+        this.apply_developers = apply_developers;
+    }
+
+    public void setApply_designers(int apply_designers) {
+        this.apply_designers = apply_designers;
+    }
 }

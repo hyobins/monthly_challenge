@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +40,7 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
     String final_teamName = "";
     int final_maxDevelopers = 1;
     int final_maxDesigners = 1;
-    int final_applyDevelopers = 0;
+    static int final_applyDevelopers = 0;
     int final_applyDesigners = 0;
     String final_openchatUrl = "";
     FirebaseAuth firebaseAuth;
@@ -147,8 +149,8 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
                                     System.out.println("왜 실패 ? : " + e);
                                 }
                             });
-                    teamCollectionReference.document(final_teamName).update("apply_developers",final_applyDevelopers+1);
-                    final_applyDevelopers += 1;
+                    teamCollectionReference.document(final_teamName).update("apply_developers",1);
+                    final_applyDevelopers = 1;
                 }
                 else{
                     newField.put("position", "디자이너");
@@ -168,17 +170,19 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
                                     System.out.println("왜 실패 ? : " + e);
                                 }
                             });
-                    teamCollectionReference.document(final_teamName).update("apply_designers",final_applyDesigners+1);
-                    final_applyDesigners += 1;
+                    teamCollectionReference.document(final_teamName).update("apply_designers",1);
+                    final_applyDesigners = 1;
                 }
 
                 Intent intent = new Intent();
+                TeamListItem newTeamListItem= new TeamListItem(final_teamName, final_maxDesigners, final_maxDevelopers, final_applyDesigners,final_applyDevelopers,final_openchatUrl);
                 intent.putExtra("new_teamName",final_teamName);
                 intent.putExtra("new_maxDesigners", final_maxDesigners);
                 intent.putExtra("new_maxDevelopers", final_maxDevelopers);
                 intent.putExtra("new_applyDesigners", final_applyDesigners);
                 intent.putExtra("new_applyDevelopers", final_maxDevelopers);
                 intent.putExtra("new_openchatUrl",final_openchatUrl);
+                System.out.println("apply Developers1 : " + final_applyDevelopers);
                 setResult(RESULT_OK, intent);
 
                 finish();
@@ -194,6 +198,7 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
                     max -= 1;
                     binding.textViewMaxDevelopers.setText(Integer.toString(max));
                     final_maxDevelopers--;
+                    System.out.println("apply Developers1-1 : " + final_applyDevelopers);
                 }
                 break;
             case R.id.imageView_plusDeveloper :
@@ -202,6 +207,7 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
                     max += 1;
                     binding.textViewMaxDevelopers.setText(Integer.toString(max));
                     final_maxDevelopers++;
+                    System.out.println("apply Developers1-2 : " + final_applyDevelopers);
                 }
                 break;
             case R.id.imageView_minusDesigner :
@@ -210,6 +216,7 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
                     max -= 1;
                     binding.textViewMaxDesigners.setText(Integer.toString(max));
                     final_maxDesigners--;
+                    System.out.println("apply Developers1-3 : " + final_applyDevelopers);
                 }
                 break;
             case R.id.imageView_plusDesigner :
@@ -218,10 +225,14 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
                     max += 1;
                     binding.textViewMaxDesigners.setText(Integer.toString(max));
                     final_maxDesigners++;
+                    System.out.println("apply Developers1-4 : " + final_applyDevelopers);
                 }
                 break;
 
 
         }
+    }
+    public static int getApplyDevelopers(){
+        return final_applyDevelopers;
     }
 }

@@ -58,7 +58,7 @@ public class TeamListAdapter extends BaseAdapter {
     public View getView(int position, View converView, ViewGroup parent) {
         View view = layoutInflater.inflate(R.layout.listview_team, null);
         ButterKnife.bind(this, view);
-
+        System.out.println("apply Developers3 : " + teamListItems.get(position).getApply_developers());
         textView_teamName.setText(teamListItems.get(position).getTeamName());
         textView_developers.setText(teamListItems.get(position).getApply_developers() + "/" + teamListItems.get(position).getMax_developers());
         textView_designers.setText(teamListItems.get(position).getApply_designers() + "/" + teamListItems.get(position).getMax_designers());
@@ -78,6 +78,7 @@ public class TeamListAdapter extends BaseAdapter {
                 imageView_designer1.setVisibility(View.INVISIBLE);
                 break;
         }
+
 
         switch (teamListItems.get(position).getApply_developers()){
             case 3 :
