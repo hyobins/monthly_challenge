@@ -71,6 +71,10 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
         binding.buttonCheck.setOnClickListener(this);
         binding.buttonCancel.setOnClickListener(this);
         binding.buttonCreate.setOnClickListener(this);
+        binding.imageViewMinusDeveloper.setOnClickListener(this);
+        binding.imageViewPlusDeveloper.setOnClickListener(this);
+        binding.imageViewMinusDesigner.setOnClickListener(this);
+        binding.imageViewPlusDesigner.setOnClickListener(this);
     }
 
     @Override
@@ -80,11 +84,11 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
                 String teamName = binding.editTextTeamName.getText().toString();
                 for(int i=0;i<teamListItems.size();i++){
                     if(teamListItems.get(i).getTeamName().equals(teamName)){
-                        Toast.makeText(getApplicationContext(), "이미 존재하는 이름 입니다",Toast.LENGTH_LONG);
+                        Toast.makeText(getApplicationContext(), "이미 존재하는 이름 입니다",Toast.LENGTH_SHORT).show();
                         break;
                     }
                     else if(i == teamListItems.size()-1){
-                        Toast.makeText(getApplicationContext(), "사용 가능한 이름 입니다", Toast.LENGTH_LONG);
+                        Toast.makeText(getApplicationContext(), "사용 가능한 이름 입니다", Toast.LENGTH_SHORT).show();
                         final_teamName = teamName;
                     }
                 }
@@ -93,18 +97,18 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
             case R.id.button_create :
                 individualItem = MainActivity.getIndividualItem();
                 final_openchatUrl = binding.editTextOpenchatUrl.getText().toString();
-                final_maxDesigners = Integer.parseInt(binding.textViewMaxDesigner.getText().toString());
+                final_maxDesigners = Integer.parseInt(binding.textViewMaxDesigners.getText().toString());
                 final_maxDevelopers = Integer.parseInt(binding.textViewMaxDevelopers.getText().toString());
                 if(final_teamName.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "팀 이름을 정해 주세요", Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(), "팀 이름을 정해 주세요", Toast.LENGTH_SHORT).show();
                     break;
                 }
                 else if(final_openchatUrl.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "팀 오픈채팅 주소를 입력해 주세요", Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(), "팀 오픈채팅 주소를 입력해 주세요", Toast.LENGTH_SHORT).show();
                     break;
                 }
                 newTeam.put("apply_designers",final_applyDesigners);
-                newTeam.put("apply_developers",final_maxDevelopers);
+                newTeam.put("apply_developers",final_applyDevelopers);
                 newTeam.put("max_designers",final_maxDesigners);
                 newTeam.put("max_developers",final_maxDevelopers);
                 newTeam.put("openchat_url",final_openchatUrl);
@@ -183,6 +187,40 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
                 break;
             case R.id.button_cancel :
                 finish();
+
+            case R.id.imageView_minusDeveloper :
+                int max = Integer.parseInt(binding.textViewMaxDevelopers.getText().toString());
+                if(max != 1){
+                    max -= 1;
+                    binding.textViewMaxDevelopers.setText(Integer.toString(max));
+                    final_maxDevelopers--;
+                }
+                break;
+            case R.id.imageView_plusDeveloper :
+                max = Integer.parseInt(binding.textViewMaxDevelopers.getText().toString());
+                if(max != 3){
+                    max += 1;
+                    binding.textViewMaxDevelopers.setText(Integer.toString(max));
+                    final_maxDevelopers++;
+                }
+                break;
+            case R.id.imageView_minusDesigner :
+                max = Integer.parseInt(binding.textViewMaxDesigners.getText().toString());
+                if(max != 1){
+                    max -= 1;
+                    binding.textViewMaxDesigners.setText(Integer.toString(max));
+                    final_maxDesigners--;
+                }
+                break;
+            case R.id.imageView_plusDesigner :
+                max = Integer.parseInt(binding.textViewMaxDesigners.getText().toString());
+                if(max != 3){
+                    max += 1;
+                    binding.textViewMaxDesigners.setText(Integer.toString(max));
+                    final_maxDesigners++;
+                }
+                break;
+
 
         }
     }
