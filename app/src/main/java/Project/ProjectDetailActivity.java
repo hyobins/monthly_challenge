@@ -56,7 +56,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     IndividualItem individualItem;
-    Boolean projectInIndividual = false;
+    boolean projectInIndividual = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +84,25 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         teamListItems = new ArrayList<TeamListItem>();
 
         individualItem = MainActivity.getIndividualItem();
+        db.collection("individual")
+                .document(individualItem.getUid())
+                .collection("my_project")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                System.out.println("일치안해??? " + document.getId() + ", " + projectId);
+                                if(document.getId().equals(projectId)){
+                                    projectInIndividual = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                });
+
 
         db.collection("project")
                 .document(projectId)
@@ -111,16 +130,19 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TeamListItem selectItem = teamListItems.get(position);
                 String teamName = selectItem.getTeamName();
-                if((selectItem.getApply_developers() == selectItem.getMax_developers()) || (selectItem.getApply_designers() == selectItem.getMax_designers())){
-                    Toast.makeText(getApplicationContext(), "더 이상 지원할 수 없습니다",Toast.LENGTH_SHORT).show();
-                    return ;
-                }
-                projectInIndividual = false;
-                projectInIndividualFunction();
                 if(projectInIndividual){
                     Toast.makeText(getApplicationContext(),"이미 참여한 팀이 있습니다",Toast.LENGTH_SHORT).show();
                     return ;
                 }
+                if((selectItem.getApply_developers() == 3 && selectItem.getApply_developers() == selectItem.getMax_developers()) && individualItem.getPosition() == "개발자"){
+                    Toast.makeText(getApplicationContext(), "더 이상 지원할 수 없습니다",Toast.LENGTH_SHORT).show();
+                    return ;
+                }
+                if((selectItem.getApply_designers() == 3 && selectItem.getApply_designers() == selectItem.getMax_designers()) && individualItem.getPosition() == "디자이너"){
+                    Toast.makeText(getApplicationContext(), "더 이상 지원할 수 없습니다",Toast.LENGTH_SHORT).show();
+                    return ;
+                }
+
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context, android.R.style.Theme_DeviceDefault_Light_Dialog);
                 dialogBuilder.setMessage( "팀에 참여하시겠습니까?")
                         .setTitle(teamName)
@@ -159,6 +181,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
 //                                }
 //                            }
 //                        });
+                projectInIndividual = true;
 
             }
         });
@@ -200,8 +223,6 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                projectInIndividual = false;
-                projectInIndividualFunction();
                 if(projectInIndividual){
                     Toast.makeText(getApplicationContext(),"이미 참여한 팀이 있습니다",Toast.LENGTH_SHORT).show();
                     return ;
@@ -236,6 +257,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
 
                             }
                         });
+                projectInIndividual = true;
             }
         }
     }
@@ -337,24 +359,5 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
 
         }
 
-    }
-    private void projectInIndividualFunction() {
-        db.collection("individual")
-                .document(individualItem.getUid())
-                .collection("my_project")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(document.getId().equals(projectId)){
-                                    projectInIndividual = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                });
     }
 }
