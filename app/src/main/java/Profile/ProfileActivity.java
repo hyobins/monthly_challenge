@@ -24,6 +24,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.core.FirestoreClient;
 
+import java.util.ArrayList;
 
 
 public class ProfileActivity extends AppCompatActivity {
@@ -46,6 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     if(document != null){
+
                         binding.userPosition.setText(document.getString("position"));
                         binding.name.setText(document.getString("name"));
                         binding.email.setText(document.getString("email"));
