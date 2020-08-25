@@ -9,8 +9,8 @@
     </data>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="400dp"
+        android:layout_height="600dp"
         android:background="#FFFFFF"
         android:orientation="vertical">
 
@@ -36,7 +36,7 @@
                 android:text="팀 이름 :" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/editText_teamName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -44,7 +44,7 @@
                 android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_check"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -80,14 +80,14 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/imageView_minusDeveloper"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:src="@drawable/minus" />
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/textView_maxDevelopers"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -95,7 +95,7 @@
                     android:text="1" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imageView_plusDeveloper"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -125,14 +125,14 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/imageView_minusDesigner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:src="@drawable/minus" />
 
                 <TextView
-                    android:id="@+id/textView19"
+                    android:id="@+id/textView_maxDesigner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -140,7 +140,7 @@
                     android:text="1" />
 
                 <ImageView
-                    android:id="@+id/imageView8"
+                    android:id="@+id/imageView_plusDesigner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -162,7 +162,7 @@
                 android:text="오픈채팅 주소" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName3"
+                android:id="@+id/editText_openchatUrl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -176,14 +176,14 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="팀 생성" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/button_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
