@@ -258,7 +258,8 @@
                 <ListView
                     android:id="@+id/listView_teamList"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="8"
                     android:background="#FFFFFF">
 
                 </ListView>
@@ -266,10 +267,12 @@
                 <Button
                     android:id="@+id/button_createTeam"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="팀 만들기" />
+                    android:layout_weight="1"
+                    android:text="팀 만들기"
+                    android:visibility="visible" />
 
             </LinearLayout>
 
