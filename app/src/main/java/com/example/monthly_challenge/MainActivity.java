@@ -9,21 +9,30 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.monthly_challenge.BottomNavigationFragment.*;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.monthly_challenge.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import Profile.IndividualItem;
 import Project.ProjectListItem;
 
 
@@ -51,7 +60,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     SimpleDateFormat simpleDateFormat;
 //    Map<String, Object> project = new HashMap<>();
-//    Map<String, Object> team = new HashMap<>();
+    Map<String, Object> team = new HashMap<>();
+
+    static IndividualItem individualItem;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +82,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         endListItems = new ArrayList();
         simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
-//        team.put("team_name","testteam");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
 //        team.put("max_developers",null);
 //        team.put("max_designers",null);
 //        team.put("apply_developers",null);
@@ -103,6 +116,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //                        Log.w(null, "Error adding document", e);
 //                    }
 //                });
+        db.collection("individual")
+                .document(uid)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            DocumentSnapshot document = task.getResult();
+                            if(document != null){
+                                individualItem = new IndividualItem(uid, document.getString("email"), document.getString("interest")
+                                        , document.getString("introduce"), document.getString("name")
+                                        , document.getString("position"), document.getString("profile_url")
+                                        , document.getString("virtual_account"));
+                            }
+                        }
+                    }
+                });
 
 
         db.collection("project")
@@ -141,7 +171,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     }
                 });
 
-        System.out.println(progressListItems);
     }
 
     @Override
@@ -172,5 +201,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
     static public ArrayList<ProjectListItem> getEndListItem(){
         return endListItems;
+    }
+    public static IndividualItem getIndividualItem(){
+        return individualItem;
     }
 }

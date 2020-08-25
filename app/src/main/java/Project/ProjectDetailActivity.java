@@ -1,6 +1,7 @@
 package Project;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 
 import Project.Team.TeamListAdapter;
 import Project.Team.TeamListItem;
+import Project.Team.TeamPopupActivity;
 
 public class ProjectDetailActivity extends AppCompatActivity implements View.OnClickListener {
     Context context = this;
@@ -40,7 +42,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
     String teamName;
     ArrayList<String> teamNames;
     TeamListItem teamListItem;
-    ArrayList<TeamListItem> teamListItems;
+    static ArrayList<TeamListItem> teamListItems;
     TeamListAdapter adapter;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -62,7 +64,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         binding.submitText.setOnClickListener(this);
         binding.matchText.setOnClickListener(this);
         binding.infoText.setOnClickListener(this);
-        binding.buttonCreatTeam.setOnClickListener(this);
+        binding.buttonCreateTeam.setOnClickListener(this);
         prevLayout = binding.infoLayout;
         prevView = binding.infoView;
         prevText = binding.infoText;
@@ -80,7 +82,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 teamListItem = new TeamListItem(document.getId(), Integer.valueOf(document.get("max_designers").toString()),Integer.valueOf(document.get("max_developers").toString())
-                                                                ,Integer.valueOf(document.get("apply_designers").toString()),Integer.valueOf(document.get("apply_developers").toString()));
+                                                                ,Integer.valueOf(document.get("apply_designers").toString()),Integer.valueOf(document.get("apply_developers").toString()), document.get("openchat_url").toString());
                                 teamListItems.add(teamListItem);
                             }
                             adapter = new TeamListAdapter(context, teamListItems);
@@ -115,10 +117,27 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
                 prevSettingAndChange(binding.infoText,binding.infoView, binding.infoLayout);
 
                 break;
-            case R.id.button_creatTeam:
-
+            case R.id.button_createTeam:
+                Intent intent = new Intent(context, TeamPopupActivity.class);
+                intent.putExtra("projectId",projectId);
+                startActivityForResult(intent,1);
                 break;
 
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+//                System.out.println(data.getStringExtra("new_teamName") + ", " + Integer.valueOf(data.getStringExtra("new_maxDesigners")) + ", " + data.getStringExtra("new_openchatUrl"));
+                teamListItem = new TeamListItem(data.getStringExtra("new_teamName"), data.getExtras().getInt("new_maxDesigners")
+                        , data.getExtras().getInt("new_maxDevelopers"), data.getExtras().getInt("new_applyDesigners")
+                        , data.getExtras().getInt("new_applyDevelopers"), data.getStringExtra("new_openchatUrl"));
+                teamListItems.add(teamListItem);
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 
@@ -135,6 +154,10 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         prevView = view;
         prevLayout = linearLayout;
 
+    }
+
+    public static ArrayList<TeamListItem> getTeamListItems(){
+        return teamListItems;
     }
 
 }
