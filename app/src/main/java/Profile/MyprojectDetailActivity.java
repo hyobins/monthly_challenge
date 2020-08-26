@@ -128,7 +128,8 @@ public class MyprojectDetailActivity extends AppCompatActivity implements View.O
                             binding.submitEmail.setText(submit_email);
 
                             binding.textViewCompanyContents.setText(document2.getString("company"));
-                            binding.textViewDescriptionContents.setText(document2.getString("description"));
+                            String temp = document2.getString("description").replace("*","\n");
+                            binding.textViewDescriptionContents.setText(temp);
                             binding.textViewDirectionContents.setText(document2.getString("direction"));
 
                         }
