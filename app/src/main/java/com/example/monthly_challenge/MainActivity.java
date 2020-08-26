@@ -145,18 +145,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                                 switch (document.get("state").toString()){
                                     case "진행중":
                                         progressListItem = new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
-                                                ,document.get("reward").toString());
+                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(), document.get("description").toString());
                                         progressListItems.add(progressListItem);
 
                                         break;
                                     case "심사중":
-                                        judgeListItem = new ProjectListItem(document.getId(), document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
-                                                ,document.get("reward").toString());
+                                        judgeListItem = new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(), document.get("description").toString());
                                         judgeListItems.add(judgeListItem);
                                         break;
                                     case "종료":
-                                        endListItem = new ProjectListItem(document.getId(), document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
-                                                ,document.get("reward").toString());
+                                        new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(),document.get("description").toString());
                                         endListItems.add(endListItem);
                                         break;
 

@@ -92,18 +92,30 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                         intent.putExtra("title",progressProjectListAdapter.getItem(position).getTitle());
                         intent.putExtra("deadline",progressProjectListAdapter.getItem(position).getDeadline());
                         intent.putExtra("reward",progressProjectListAdapter.getItem(position).getReward());
+                        intent.putExtra("direction", progressProjectListAdapter.getItem(position).getDirection());
+                        intent.putExtra("state", progressProjectListAdapter.getItem(position).getState());
+                        intent.putExtra("submit", progressProjectListAdapter.getItem(position).getSubmit());
+                        intent.putExtra("description", progressProjectListAdapter.getItem(position).getDescription());
                         break;
                     case "심사중" :
                         intent.putExtra("projectId",judgeProjectListAdapter.getItem(position).getProjectId());
                         intent.putExtra("title",judgeProjectListAdapter.getItem(position).getTitle());
                         intent.putExtra("deadline",judgeProjectListAdapter.getItem(position).getDeadline());
                         intent.putExtra("reward",judgeProjectListAdapter.getItem(position).getReward());
+                        intent.putExtra("direction", judgeProjectListAdapter.getItem(position).getDirection());
+                        intent.putExtra("state", judgeProjectListAdapter.getItem(position).getState());
+                        intent.putExtra("submit", judgeProjectListAdapter.getItem(position).getSubmit());
+                        intent.putExtra("description", judgeProjectListAdapter.getItem(position).getDescription());
                         break;
                     case "종료" :
                         intent.putExtra("projectId",endProjectListAdapter.getItem(position).getProjectId());
                         intent.putExtra("title",endProjectListAdapter.getItem(position).getTitle());
                         intent.putExtra("deadline",endProjectListAdapter.getItem(position).getDeadline());
                         intent.putExtra("reward",endProjectListAdapter.getItem(position).getReward());
+                        intent.putExtra("direction", endProjectListAdapter.getItem(position).getDirection());
+                        intent.putExtra("state", endProjectListAdapter.getItem(position).getState());
+                        intent.putExtra("submit", endProjectListAdapter.getItem(position).getSubmit());
+                        intent.putExtra("description", endProjectListAdapter.getItem(position).getDescription());
                         break;
 
                 }
