@@ -31,6 +31,10 @@ public class SignupTypeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void BackButton(View view){
+        finish();
+    }
+
 
 
 }

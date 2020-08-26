@@ -7,12 +7,27 @@
     android:orientation="vertical"
     tools:context=".SplashActivity">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/logo"
-        android:layout_marginTop="150dp"
-        android:layout_gravity="center"
-        />
+    <RelativeLayout
+        android:background="@drawable/splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="87.5dp"
+            android:layout_height="100dp"
+
+            android:layout_centerInParent="true"
+            android:src="@drawable/splashlogo" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="48dp"
+            android:layout_height="25.5dp"
+
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="604dp"
+            android:src="@drawable/splashcod" />
+    </RelativeLayout>
 </LinearLayout>
