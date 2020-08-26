@@ -11,7 +11,7 @@
         android:id="@+id/categoryView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@drawable/background"
         android:orientation="vertical"
         android:paddingTop="15dp"
         android:visibility="visible">
@@ -480,6 +480,9 @@
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="18dp"
                     android:background="@drawable/white_right_half_round_background"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
                     android:scrollbars="none" />
             </LinearLayout>
 
