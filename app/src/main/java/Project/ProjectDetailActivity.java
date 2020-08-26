@@ -76,7 +76,6 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         binding.textViewSubmitContents.setText(intent.getStringExtra("submit"));
 
         binding.backButton.setOnClickListener(this);
-        binding.submitText.setOnClickListener(this);
         binding.matchText.setOnClickListener(this);
         binding.infoText.setOnClickListener(this);
         binding.buttonCreateTeam.setOnClickListener(this);
@@ -197,11 +196,6 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         switch (v.getId()){
             case R.id.backButton:
                 finish();
-                break;
-            case R.id.submitText:
-
-                prevSettingAndChange(binding.submitText,binding.submitView,binding.submitLayout);
-
                 break;
             case R.id.matchText:
 
