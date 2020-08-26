@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,10 +24,11 @@ import butterknife.ButterKnife;
 
 public class SettingFragment extends Fragment implements View.OnClickListener{
     ViewGroup viewGroup;
-    @BindView(R.id.profile) Button profile;
-    @BindView(R.id.my_project) Button my_project;
-    @BindView(R.id.my_point) Button my_point;
-    @BindView(R.id.logout) Button logout;
+    @BindView(R.id.profile)
+    LinearLayout profile;
+    @BindView(R.id.my_project) LinearLayout my_project;
+    @BindView(R.id.my_point) LinearLayout my_point;
+    @BindView(R.id.logout) LinearLayout logout;
 
     @Nullable
     @Override
