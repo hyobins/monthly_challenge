@@ -73,7 +73,6 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
         binding.textViewCompanyContents.setText(intent.getStringExtra("company"));
         binding.textViewDescriptionContents.setText(intent.getStringExtra("description"));
         binding.textViewDirectionContents.setText(intent.getStringExtra("direction"));
-        binding.textViewSubmitContents.setText(intent.getStringExtra("submit"));
 
         binding.backButton.setOnClickListener(this);
         binding.matchText.setOnClickListener(this);
