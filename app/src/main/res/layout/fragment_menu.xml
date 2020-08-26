@@ -13,17 +13,18 @@
         android:layout_height="match_parent"
         android:background="#ffffff"
         android:orientation="vertical"
-        android:paddingTop="10dp"
+        android:paddingTop="15dp"
         android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/linearLayout_projectCat"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:weightSum="10">
 
             <ImageView
@@ -47,9 +48,11 @@
             android:id="@+id/linearLayout_portfolioCat"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:weightSum="10">
 
             <ImageView
@@ -92,8 +95,8 @@
                 android:layout_marginTop="0.5dp"
                 android:background="#E7E7E7"
                 android:paddingLeft="58dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="프로젝트 우승작"
                 android:textColor="#3E3E3E"
                 android:textSize="15sp" />
@@ -105,8 +108,8 @@
                 android:layout_marginTop="0.5dp"
                 android:background="#E7E7E7"
                 android:paddingLeft="58dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="개인 포트폴리오"
                 android:textColor="#3E3E3E"
                 android:textSize="15sp" />
@@ -117,9 +120,11 @@
             android:id="@+id/linearLayout_trendCat"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:weightSum="10">
 
             <ImageView
@@ -162,8 +167,8 @@
                 android:layout_marginTop="0.5dp"
                 android:background="#E7E7E7"
                 android:paddingLeft="58dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="개발 트렌드"
                 android:textColor="#3E3E3E"
                 android:textSize="15sp" />
@@ -175,8 +180,8 @@
                 android:layout_marginTop="0.5dp"
                 android:background="#E7E7E7"
                 android:paddingLeft="58dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="디자인 트렌드"
                 android:textColor="#3E3E3E"
                 android:textSize="15sp" />
@@ -186,9 +191,11 @@
             android:id="@+id/linearLayout_allianceCat"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:weightSum="10">
 
             <ImageView
@@ -211,9 +218,11 @@
             android:id="@+id/linearLayout_serviceCat"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:weightSum="10">
 
             <ImageView
@@ -255,8 +264,8 @@
                 android:layout_marginTop="0.5dp"
                 android:background="#E7E7E7"
                 android:paddingLeft="58dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="공지사항"
                 android:textColor="#3E3E3E"
                 android:textSize="15sp" />
@@ -268,8 +277,8 @@
                 android:layout_marginTop="0.5dp"
                 android:background="#E7E7E7"
                 android:paddingLeft="58dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="FAQ"
                 android:textColor="#3E3E3E"
                 android:textSize="15sp" />
@@ -281,8 +290,8 @@
                 android:layout_marginTop="0.5dp"
                 android:background="#E7E7E7"
                 android:paddingLeft="58dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="문의하기"
                 android:textColor="#3E3E3E"
                 android:textSize="15sp" />
