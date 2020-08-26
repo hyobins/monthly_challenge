@@ -40,7 +40,7 @@ import Project.ProjectDetailActivity;
 import Project.ProjectListAdapter;
 import Project.ProjectListItem;
 
-public class MyprojectActivity extends AppCompatActivity {
+public class MyprojectActivity extends AppCompatActivity implements View.OnClickListener{
     ActivityMyprojectBinding binding;
 
     Context context = this;
@@ -71,6 +71,9 @@ public class MyprojectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_myproject);
         binding.setActivity(this);
+
+        prevText = binding.textViewProgress;
+        prevView = binding.viewProgress;
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -152,7 +155,9 @@ public class MyprojectActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        binding.textViewProgress.setOnClickListener(this);
+        binding.textViewJudge.setOnClickListener(this);
+        binding.textViewEnd.setOnClickListener(this);
 
     }
 
@@ -160,23 +165,40 @@ public class MyprojectActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.textView_progress:
+                binding.listViewProjectList.setAdapter(progressProjectListAdapter);
+                prevSettingAndChange(binding.textViewProgress, binding.viewProgress);
+                stateTab = "진행중";
+                break;
+            case R.id.textView_judge:
+                binding.listViewProjectList.setAdapter(judgeProjectListAdapter);
+                prevSettingAndChange(binding.textViewJudge, binding.viewJudge);
+                stateTab = "심사중";
+                break;
+            case R.id.textView_end:
+                binding.listViewProjectList.setAdapter(endProjectListAdapter);
+                prevSettingAndChange(binding.textViewEnd, binding.viewEnd);
+                stateTab = "종료";
+                break;
+            }
+        }
 
-    public void tabprogress(View v){
-        binding.listViewProjectList.setAdapter(progressProjectListAdapter);
-        stateTab = "진행중";
+
+    private void prevSettingAndChange(TextView textView, View view){
+        prevText.setTextColor(Color.parseColor("#ffffff"));
+        prevView.setVisibility(View.INVISIBLE);
+
+        textView.setTextColor(Color.parseColor("#000000"));
+        view.setVisibility(View.VISIBLE);
+
+        prevText = textView;
+        prevView = view;
+
     }
-
-    public void tabjudge(View v){
-        binding.listViewProjectList.setAdapter(judgeProjectListAdapter);
-        stateTab = "심사중";
-    }
-
-    public void tabend(View v){
-        binding.listViewProjectList.setAdapter(endProjectListAdapter);
-        stateTab = "종료";
-    }
-
-
-
-
 }
+
+
+
