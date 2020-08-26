@@ -126,6 +126,11 @@ public class MyprojectDetailActivity extends AppCompatActivity implements View.O
                             DocumentSnapshot document2 = task.getResult();
                             String submit_email = document2.getString("submit");
                             binding.submitEmail.setText(submit_email);
+
+                            binding.textViewCompanyContents.setText(document2.getString("company"));
+                            binding.textViewDescriptionContents.setText(document2.getString("description"));
+                            binding.textViewDirectionContents.setText(document2.getString("direction"));
+
                         }
                     }
                 });
