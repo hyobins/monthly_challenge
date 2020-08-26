@@ -178,7 +178,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="#EDEDED"
                     android:orientation="vertical">
@@ -186,19 +186,23 @@
                     <TextView
                         android:id="@+id/textView41"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="회사명" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="회사명"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/textView_companyContents"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text=""
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="#EDEDED"
                     android:orientation="vertical">
@@ -206,19 +210,23 @@
                     <TextView
                         android:id="@+id/textView39"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="서비스 설명" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="서비스 설명"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/textView_descriptionContents"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text=""
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="#EDEDED"
                     android:orientation="vertical">
@@ -226,14 +234,18 @@
                     <TextView
                         android:id="@+id/textView38"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="개발 및 디자인 방향 " />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="개발 및 디자인 방향 "
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/textView_directionContents"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text=""
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -261,6 +273,14 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="개발자 2~3명 디자이너 1~2명" />
 
                 <TextView
                     android:id="@+id/myTeamName"

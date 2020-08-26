@@ -144,19 +144,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 switch (document.get("state").toString()){
                                     case "진행중":
+                                        String temp = document.get("description").toString();
+                                        String temp1= temp.replace("*", "\n");
                                         progressListItem = new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
-                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(), document.get("description").toString());
+                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(), temp1);
                                         progressListItems.add(progressListItem);
 
                                         break;
                                     case "심사중":
+                                        temp = document.get("description").toString();
+                                        temp1= temp.replace("*", "\n");
                                         judgeListItem = new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
-                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(), document.get("description").toString());
+                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(), temp1);
                                         judgeListItems.add(judgeListItem);
                                         break;
                                     case "종료":
+                                        temp = document.get("description").toString();
+                                        temp1= temp.replace("*", "\n");
                                         new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
-                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(),document.get("description").toString());
+                                                ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(),temp1);
                                         endListItems.add(endListItem);
                                         break;
 
