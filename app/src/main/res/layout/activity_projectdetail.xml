@@ -84,8 +84,8 @@
                     android:id="@+id/reward"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
                     android:layout_gravity="center"
+                    android:paddingLeft="5dp"
                     android:src="@drawable/reward" />
 
                 <TextView
@@ -95,16 +95,15 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="18sp"
                     android:textColor="#303030"
-                    />
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/deadline"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
                     android:layout_gravity="center"
+                    android:paddingLeft="5dp"
                     android:src="@drawable/deadline" />
 
                 <TextView
@@ -114,8 +113,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#303030"/>
+                    android:textColor="#303030"
+                    android:textSize="18sp" />
             </LinearLayout>//상금,데드라인
 
             <LinearLayout
@@ -187,10 +186,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="-409dp"
                     android:layout_marginRight="2dp"
                     android:orientation="vertical"
-                    android:paddingTop="50dp">
+                    android:paddingTop="10dp">
 
                     <LinearLayout
                         android:id="@+id/infoLayout"
@@ -245,7 +243,7 @@
                                 <TextView
                                     android:id="@+id/textView_companyContents"
                                     android:layout_width="match_parent"
-                                    android:layout_height="24dp"
+                                    android:layout_height="wrap_content"
                                     android:text="iHQ"
                                     android:textSize="14dp" />
 
@@ -300,7 +298,7 @@
                                 <TextView
                                     android:id="@+id/textView_descriptionContents"
                                     android:layout_width="match_parent"
-                                    android:layout_height="24dp"
+                                    android:layout_height="wrap_content"
                                     android:text="TextView"
                                     android:textSize="14dp" />
 
@@ -353,7 +351,7 @@
                                 <TextView
                                     android:id="@+id/textView_directionContents"
                                     android:layout_width="match_parent"
-                                    android:layout_height="24dp"
+                                    android:layout_height="wrap_content"
                                     android:text="TextView"
                                     android:textSize="14dp" />
 
@@ -480,7 +478,9 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp">
 
 
                             <ListView
@@ -501,10 +501,11 @@
                             <Button
                                 android:id="@+id/button_createTeam"
                                 android:layout_width="335dp"
-                                android:layout_height="58dp"
+                                android:layout_height="44dp"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="30dp"
                                 android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/signup"
                                 android:gravity="center_vertical"
@@ -520,15 +521,7 @@
                     </LinearLayout>
                     //팀모집 상세 레이아웃
 
-                    <LinearLayout
-                        android:id="@+id/submitLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#FFFFFF"
-                        android:orientation="vertical"
-                        android:visibility="visible">
-
-                    </LinearLayout>//제출 상세 레이아웃
+                    //제출 상세 레이아웃
 
                 </LinearLayout>
 

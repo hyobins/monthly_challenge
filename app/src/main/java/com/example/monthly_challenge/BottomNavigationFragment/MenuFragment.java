@@ -96,6 +96,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                         intent.putExtra("state", progressProjectListAdapter.getItem(position).getState());
                         intent.putExtra("submit", progressProjectListAdapter.getItem(position).getSubmit());
                         intent.putExtra("description", progressProjectListAdapter.getItem(position).getDescription());
+                        intent.putExtra("company",progressProjectListAdapter.getItem(position).getCompany());
                         break;
                     case "심사중" :
                         intent.putExtra("projectId",judgeProjectListAdapter.getItem(position).getProjectId());
@@ -106,6 +107,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                         intent.putExtra("state", judgeProjectListAdapter.getItem(position).getState());
                         intent.putExtra("submit", judgeProjectListAdapter.getItem(position).getSubmit());
                         intent.putExtra("description", judgeProjectListAdapter.getItem(position).getDescription());
+                        intent.putExtra("company",judgeProjectListAdapter.getItem(position).getCompany());
                         break;
                     case "종료" :
                         intent.putExtra("projectId",endProjectListAdapter.getItem(position).getProjectId());
@@ -116,6 +118,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                         intent.putExtra("state", endProjectListAdapter.getItem(position).getState());
                         intent.putExtra("submit", endProjectListAdapter.getItem(position).getSubmit());
                         intent.putExtra("description", endProjectListAdapter.getItem(position).getDescription());
+                        intent.putExtra("company",endProjectListAdapter.getItem(position).getCompany());
                         break;
 
                 }
