@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="Project.Team.TeamPopupActivity" android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name="Profile.MyteamsActivity"></activity>
+        <activity android:name="Profile.MyprojectDetailActivity" />
+        <activity
+            android:name="Project.Team.TeamPopupActivity"
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name="Project.ProjectDetailActivity" />
         <activity android:name="Profile.MyprojectActivity" />
         <activity android:name="Profile.ProfileActivity" />
