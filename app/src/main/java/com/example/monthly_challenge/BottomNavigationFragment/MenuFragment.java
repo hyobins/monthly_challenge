@@ -40,6 +40,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.projectIngView) ScrollView projectIngView;
     @BindView(R.id.linearLayout_projectCat) LinearLayout linearLayout_projectCat;
     @BindView(R.id.linearLayout_portfolioCat) LinearLayout linearLayout_portfolioCat;
+    @BindView(R.id.linearLayout_serviceCat) LinearLayout linearLayout_serviceCat;
+    @BindView(R.id.linearLayout_trendCat) LinearLayout linearLayout_trendCat;
 
     String stateTab = "진행중";
 
@@ -50,6 +52,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.listView_projectList)
     ListView listview_projectList;
 
+    @BindView(R.id.linearLayout_portfolioDetail) LinearLayout linearLayout_portfolioDetail;
+    @BindView(R.id.linearLayout_trendDetail) LinearLayout linearLayout_trendDetail;
+    @BindView(R.id.linearLayout_serviceDetail) LinearLayout linearLayout_serviceDetail;
+
 
     ArrayList<ProjectListItem> progressListItems;
     ArrayList<ProjectListItem> judgeListItems;
@@ -58,6 +64,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     ProjectListAdapter progressProjectListAdapter;
     ProjectListAdapter judgeProjectListAdapter;
     ProjectListAdapter endProjectListAdapter;
+
+    boolean portfolio = false;
+    boolean trend = false;
+    boolean service = false;
 
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -128,10 +138,13 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        linearLayout_projectCat.setOnClickListener(this);
         textView_progress.setOnClickListener(this);
         textView_judge.setOnClickListener(this);
         textView_end.setOnClickListener(this);
+        linearLayout_projectCat.setOnClickListener(this);
+        linearLayout_portfolioCat.setOnClickListener(this);
+        linearLayout_serviceCat.setOnClickListener(this);
+        linearLayout_trendCat.setOnClickListener(this);
 
 
 //        db.collection("project")
@@ -175,6 +188,39 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                 listview_projectList.setAdapter(endProjectListAdapter);
                 stateTab = "종료";
                 break;
+            case R.id.linearLayout_portfolioCat:
+                if(!portfolio){
+                    linearLayout_portfolioDetail.setVisibility(View.VISIBLE);
+                    portfolio = true;
+                }
+                else {
+                    linearLayout_portfolioDetail.setVisibility(View.GONE);
+                    portfolio = false;
+                }
+                break;
+            case R.id.linearLayout_trendCat:
+                if(!trend){
+                    linearLayout_trendDetail.setVisibility(View.VISIBLE);
+                    trend = true;
+                }
+                else {
+                    linearLayout_trendDetail.setVisibility(View.GONE);
+                    trend = false;
+                }
+                break;
+
+            case R.id.linearLayout_serviceCat:
+                if(!service){
+                    linearLayout_serviceDetail.setVisibility(View.VISIBLE);
+                    service = true;
+                }
+                else {
+                    linearLayout_serviceDetail.setVisibility(View.GONE);
+                    service = false;
+                }
+                break;
+
+
 
         }
     }
