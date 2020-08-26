@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,8 @@ import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
     ActivityProfileBinding binding;
+    Intent intent;
+    String position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,30 +39,38 @@ public class ProfileActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_profile);
         binding.setActivity(this);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-        
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference reference = db.collection("individual").document(uid);
-        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot document = task.getResult();
-                    if(document != null){
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        DocumentReference reference = db.collection("individual").document(uid);
+//        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if(task.isSuccessful()){
+//                    DocumentSnapshot document = task.getResult();
+//                    if(document != null){
+//
+//                        binding.userPosition.setText(document.getString("position"));
+//                        binding.name.setText(document.getString("name"));
+//                        binding.email.setText(document.getString("email"));
+//
+//                        binding.userIntroduce.setText(document.getString("introduce"));
+//                        binding.userInterest.setText(document.getString("interest"));
+//                        binding.userUrl.setText(document.getString("profile_url"));
+//
+//                    }
+//                }
+//            }
+//        });
+        intent = getIntent();
+        binding.userPosition.setText(intent.getStringExtra("position"));
+        binding.name.setText(intent.getStringExtra("name"));
+        binding.email.setText(intent.getStringExtra("email"));
+        binding.userIntroduce.setText(intent.getStringExtra("introduce"));
+        binding.userInterest.setText(intent.getStringExtra("interest"));
+        binding.userUrl.setText(intent.getStringExtra("profile_url"));
 
-                        binding.userPosition.setText(document.getString("position"));
-                        binding.name.setText(document.getString("name"));
-                        binding.email.setText(document.getString("email"));
-
-                        binding.userIntroduce.setText(document.getString("introduce"));
-                        binding.userInterest.setText(document.getString("interest"));
-                        binding.userUrl.setText(document.getString("profile_url"));
-
-                    }
-                }
-            }
-        });
 
     }
 

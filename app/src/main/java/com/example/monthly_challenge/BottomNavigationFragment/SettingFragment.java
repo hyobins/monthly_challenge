@@ -7,13 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.monthly_challenge.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import Login.LoginActivity;
 import Profile.MyprojectActivity;
@@ -24,11 +31,16 @@ import butterknife.ButterKnife;
 
 public class SettingFragment extends Fragment implements View.OnClickListener{
     ViewGroup viewGroup;
-    @BindView(R.id.profile)
-    LinearLayout profile;
+    @BindView(R.id.profile) LinearLayout profile;
     @BindView(R.id.my_project) LinearLayout my_project;
     @BindView(R.id.my_point) LinearLayout my_point;
     @BindView(R.id.logout) LinearLayout logout;
+
+    @BindView(R.id.name) TextView name;
+    @BindView(R.id.email) TextView email;
+    @BindView(R.id.user_position) TextView position;
+
+    Intent intent;
 
     @Nullable
     @Override
@@ -41,6 +53,36 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         my_point.setOnClickListener(this);
         logout.setOnClickListener(this);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference reference = db.collection("individual").document(uid);
+        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot document = task.getResult();
+                    if(document != null){
+
+                        position.setText(document.getString("position"));
+                        name.setText(document.getString("name"));
+                        email.setText(document.getString("email"));
+
+                        intent = new Intent(getActivity() , ProfileActivity.class);
+                        intent.putExtra("position", document.getString("position"));
+                        intent.putExtra("name", document.getString("name"));
+                        intent.putExtra("email", document.getString("email"));
+
+                        intent.putExtra("introduce",document.getString("introduce"));
+                        intent.putExtra("interest",document.getString("interest"));
+                        intent.putExtra("profile_url",document.getString("profile_url"));
+
+                    }
+                }
+            }
+        });
+
         return viewGroup;
     }
 
@@ -48,7 +90,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.profile:
-                Intent intent = new Intent(getActivity() , ProfileActivity.class);
+
                 startActivity(intent);
                 break;
             case R.id.my_project:
