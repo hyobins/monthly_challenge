@@ -112,10 +112,25 @@ public class MyprojectDetailActivity extends AppCompatActivity implements View.O
                                             binding.listViewTeamList.setAdapter(adapter);
                                         }
                                     });
-
                         }
                     }
                 });
+
+        db.collection("project")
+                .document(projectId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            DocumentSnapshot document2 = task.getResult();
+                            String submit_email = document2.getString("submit");
+                            binding.submitEmail.setText(submit_email);
+                        }
+                    }
+                });
+
+
 
         binding.listViewTeamList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -144,6 +159,7 @@ public class MyprojectDetailActivity extends AppCompatActivity implements View.O
             case R.id.submitText:
 
                 prevSettingAndChange(binding.submitText,binding.submitView,binding.submitLayout);
+
 
                 break;
             case R.id.matchText:
