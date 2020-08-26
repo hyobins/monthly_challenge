@@ -49,6 +49,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.textView_judge) TextView textView_judge;
     @BindView(R.id.textView_end) TextView textView_end;
 
+    @BindView(R.id.view_progress) View view_progress;
+    @BindView(R.id.view_judge) View view_judge;
+    @BindView(R.id.view_end) View view_end;
+
     @BindView(R.id.listView_projectList)
     ListView listview_projectList;
 
@@ -69,6 +73,9 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     boolean trend = false;
     boolean service = false;
 
+    TextView prevText ;
+    View prevView;
+
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -86,6 +93,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         judgeListItems = MainActivity.getJudgeListItem();
         endListItems = MainActivity.getEndListItem();
 
+        prevText = textView_progress;
+        prevView = view_progress;
 
         progressProjectListAdapter = new ProjectListAdapter(context, progressListItems);
         judgeProjectListAdapter = new ProjectListAdapter(context, judgeListItems);
@@ -178,14 +187,17 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
             case R.id.textView_progress:
                 listview_projectList.setAdapter(progressProjectListAdapter);
+                prevSettingAndChange(textView_progress,view_progress);
                 stateTab = "진행중";
                 break;
             case R.id.textView_judge:
                 listview_projectList.setAdapter(judgeProjectListAdapter);
+                prevSettingAndChange(textView_judge,view_judge);
                 stateTab = "심사중";
                 break;
             case R.id.textView_end:
                 listview_projectList.setAdapter(endProjectListAdapter);
+                prevSettingAndChange(textView_end,view_end);
                 stateTab = "종료";
                 break;
             case R.id.linearLayout_portfolioCat:
@@ -223,6 +235,18 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
 
         }
+    }
+
+    private void prevSettingAndChange(TextView textView, View view){
+        prevText.setTextColor(Color.parseColor("#ffffff"));
+        prevView.setVisibility(View.INVISIBLE);
+
+        textView.setTextColor(Color.parseColor("#000000"));
+        view.setVisibility(View.VISIBLE);
+
+        prevText = textView;
+        prevView = view;
+
     }
 
 
