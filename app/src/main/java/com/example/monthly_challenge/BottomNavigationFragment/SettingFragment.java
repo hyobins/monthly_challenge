@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.monthly_challenge.MainActivity;
 import com.example.monthly_challenge.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import Login.LoginActivity;
+import Profile.IndividualItem;
 import Profile.MyprojectActivity;
 import Profile.ProfileActivity;
 import butterknife.BindView;
@@ -40,6 +42,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.email) TextView email;
     @BindView(R.id.user_position) TextView position;
 
+    IndividualItem individualItem;
+
     Intent intent;
 
     @Nullable
@@ -53,35 +57,48 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         my_point.setOnClickListener(this);
         logout.setOnClickListener(this);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
+        individualItem = MainActivity.getIndividualItem();
+        position.setText(individualItem.getPosition());
+        name.setText(individualItem.getName());
+        email.setText(individualItem.getEmail());
+        intent = new Intent(getActivity() , ProfileActivity.class);
+        intent.putExtra("position", individualItem.getPosition());
+        intent.putExtra("name", individualItem.getName());
+        intent.putExtra("email", individualItem.getEmail());
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference reference = db.collection("individual").document(uid);
-        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot document = task.getResult();
-                    if(document != null){
+        intent.putExtra("introduce",individualItem.getIntroduce());
+        intent.putExtra("interest",individualItem.getInterest());
+        intent.putExtra("profile_url",individualItem.getProfile_url());
 
-                        position.setText(document.getString("position"));
-                        name.setText(document.getString("name"));
-                        email.setText(document.getString("email"));
-
-                        intent = new Intent(getActivity() , ProfileActivity.class);
-                        intent.putExtra("position", document.getString("position"));
-                        intent.putExtra("name", document.getString("name"));
-                        intent.putExtra("email", document.getString("email"));
-
-                        intent.putExtra("introduce",document.getString("introduce"));
-                        intent.putExtra("interest",document.getString("interest"));
-                        intent.putExtra("profile_url",document.getString("profile_url"));
-
-                    }
-                }
-            }
-        });
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
+//
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        DocumentReference reference = db.collection("individual").document(uid);
+//        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if(task.isSuccessful()){
+//                    DocumentSnapshot document = task.getResult();
+//                    if(document != null){
+//
+//                        position.setText(document.getString("position"));
+//                        name.setText(document.getString("name"));
+//                        email.setText(document.getString("email"));
+//
+//                        intent = new Intent(getActivity() , ProfileActivity.class);
+//                        intent.putExtra("position", document.getString("position"));
+//                        intent.putExtra("name", document.getString("name"));
+//                        intent.putExtra("email", document.getString("email"));
+//
+//                        intent.putExtra("introduce",document.getString("introduce"));
+//                        intent.putExtra("interest",document.getString("interest"));
+//                        intent.putExtra("profile_url",document.getString("profile_url"));
+//
+//                    }
+//                }
+//            }
+//        });
 
         return viewGroup;
     }

@@ -18,15 +18,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </FrameLayout>
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:itemIconSize="22dp"
-            app:itemTextColor="#3498DB"
             android:layout_alignParentBottom="true"
-            android:background="#ffffff"
-            app:menu="@menu/bottom_nav_menu"/>
+            android:background="@drawable/bottom_navi_background"
+            android:elevation="20dp"
+            android:paddingTop="10dp"
+            app:itemIconSize="26dp"
+            app:itemIconTint="@drawable/menu_selector_color"
+            app:itemTextColor="#3498DB"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bottom_nav_menu" />
     </RelativeLayout>
 
 </layout>
