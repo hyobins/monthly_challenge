@@ -142,30 +142,6 @@
                         android:visibility="invisible" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="22dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/submitText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="제출"
-                        android:textSize="18sp" />
-
-                    <View
-                        android:id="@+id/submitView"
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:layout_gravity="bottom"
-                        android:layout_marginTop="10dp"
-                        android:background="#000000"
-                        android:visibility="invisible" />
-                </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -274,6 +250,14 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="개발자 2~3명 디자이너 1~2명" />
 
                 <ListView
                     android:id="@+id/listView_teamList"
