@@ -162,14 +162,18 @@
                     <TextView
                         android:id="@+id/textView_companyTitle"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="회사명" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="회사명"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/textView_companyContents"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="iHQ" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="iHQ"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -182,14 +186,18 @@
                     <TextView
                         android:id="@+id/textView_descriptionTitle"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="서비스 설명" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="서비스 설명"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/textView_descriptionContents"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="TextView" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="TextView"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -202,14 +210,18 @@
                     <TextView
                         android:id="@+id/textView_directionTitle"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="개발 및 디자인 방향" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="개발 및 디자인 방향"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/textView_directionContents"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="TextView" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="TextView"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -222,14 +234,18 @@
                     <TextView
                         android:id="@+id/textView_submitTitle"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="작품 제출메일" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="작품 제출메일"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/textView_submitContents"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:text="TextView" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:text="TextView"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
