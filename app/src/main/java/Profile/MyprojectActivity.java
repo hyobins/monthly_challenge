@@ -120,6 +120,8 @@ public class MyprojectActivity extends AppCompatActivity implements View.OnClick
                             endProjectListAdapter = new ProjectListAdapter(context, endListItems2);
 
                             binding.listViewProjectList.setAdapter(progressProjectListAdapter);
+//                            binding.listViewProjectList.setAdapter(judgeProjectListAdapter);
+//                            binding.listViewProjectList.setAdapter(endProjectListAdapter);
                         } else{
                             Log.d("에러", "Error getting documents: ", task.getException());
                         }
