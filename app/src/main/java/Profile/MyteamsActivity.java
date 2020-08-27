@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.monthly_challenge.R;
@@ -27,13 +30,15 @@ import butterknife.ButterKnife;
 
 import static java.lang.System.*;
 
-public class MyteamsActivity extends AppCompatActivity {
+public class MyteamsActivity extends AppCompatActivity implements View.OnClickListener{
     Context context = this;
     String projectId;
     String teamName;
 
     @BindView(R.id.MyTeamsList)
     ListView myTeamsList;
+
+    @BindView(R.id.imageView_back) ImageView imageView_back;
 
     //members id 임시저장
     ArrayList<String> MemberIDLists = new ArrayList<String>();
@@ -47,6 +52,7 @@ public class MyteamsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myteams);
         ButterKnife.bind(this);
+        imageView_back.setOnClickListener(this);
 
         Intent intent = getIntent();
         projectId = intent.getExtras().getString("projectId");
@@ -116,5 +122,14 @@ public class MyteamsActivity extends AppCompatActivity {
 
 
 
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.imageView_back:
+                finish();
+        }
     }
 }
