@@ -1,6 +1,8 @@
 package Profile;
 
-public class IndividualItem {
+import java.io.Serializable;
+
+public class IndividualItem implements Serializable {
     private String uid;
     private String email;
     private String interest;

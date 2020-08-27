@@ -35,6 +35,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Profile.IndividualItem;
+import Project.Team.MemberListItem;
+import Project.Team.TeamDetailPopupActivity;
 import Project.Team.TeamListAdapter;
 import Project.Team.TeamListItem;
 import Project.Team.TeamPopupActivity;
@@ -57,6 +59,11 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     IndividualItem individualItem;
     boolean projectInIndividual = false;
+
+    ArrayList<String> individualIds;
+    static ArrayList<MemberListItem> memberListItems;
+    MemberListItem memberListItem;
+    int k;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,28 +151,73 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(getApplicationContext(), "더 이상 지원할 수 없습니다",Toast.LENGTH_SHORT).show();
                     return ;
                 }
+//                individualIds = new ArrayList<>();
+//                memberListItems = new ArrayList<>();
+                Intent teamDetailIntent = new Intent(context, TeamDetailPopupActivity.class);
+//                db.collection("project")
+//                        .document(projectId)
+//                        .collection("team")
+//                        .document(teamName)
+//                        .collection("members")
+//                        .get()
+//                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                if (task.isSuccessful()) {
+//                                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                                        individualIds.add(document.getId());
+//                                    }
+//                                }
+//                            }
+//                        });
+//                k = 0;
+//                for(k=0;k<individualIds.size();k++){
+//                    db.collection("individual")
+//                            .get()
+//                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                    if (task.isSuccessful()) {
+//                                        for (QueryDocumentSnapshot document : task.getResult()) {
+//                                            if (document.getId().equals(individualIds.get(k))) {
+//                                                memberListItem = new MemberListItem(document.getString("position"), document.getString("name"),
+//                                                        document.getString("email"),document.getString("profile"),document.getString("introduce"));
+//                                                memberListItems.add(memberListItem);
+//                                                break;
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            });
+//                }
 
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context, android.R.style.Theme_DeviceDefault_Light_Dialog);
-                dialogBuilder.setMessage( "팀에 참여하시겠습니까?")
-                        .setTitle(teamName)
-                        .setPositiveButton("예", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
-                                onClickPositive(teamName, position);
-                                dialog.cancel();
 
-                            }
-                        })
-                        .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        })
-                        .setCancelable(false) // 백버튼으로 팝업창이 닫히지 않도록 한다.
-                        .show();
+                teamDetailIntent.putExtra("teamName",teamName);
+                teamDetailIntent.putExtra("position",position);
+                teamDetailIntent.putExtra("projectId",projectId);
+                startActivityForResult(teamDetailIntent,2);
+//                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context, android.R.style.Theme_DeviceDefault_Light_Dialog);
+//                dialogBuilder.setMessage( "팀에 참여하시겠습니까?")
+//                        .setTitle(teamName)
+//                        .setPositiveButton("예", new DialogInterface.OnClickListener()
+//                        {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which)
+//                            {
+//                                onClickPositive(teamName, position);
+//                                dialog.cancel();
+//
+//                            }
+//                        })
+//                        .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.cancel();
+//                            }
+//                        })
+//                        .setCancelable(false) // 백버튼으로 팝업창이 닫히지 않도록 한다.
+//                        .show();
+
 
 //                db.collection("project")
 //                        .document(projectId)
@@ -183,7 +235,6 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
 //                                }
 //                            }
 //                        });
-                projectInIndividual = true;
 
             }
         });
@@ -255,6 +306,16 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
                             }
                         });
                 projectInIndividual = true;
+            }
+        }
+        else if(requestCode == 2){
+            if (resultCode == RESULT_OK) {
+                int position = data.getExtras().getInt("position");
+                String teamName = data.getStringExtra("teamName");
+                System.out.println(position + "," + teamName);
+                onClickPositive(teamName,position);
+                projectInIndividual = true;
+
             }
         }
     }
@@ -340,21 +401,27 @@ public class ProjectDetailActivity extends AppCompatActivity implements View.OnC
                         }
                     });
 
-            HashMap<String, Object> newMyProjectField = new HashMap<>();
-            newMyProjectField.put("team_name",teamName);
-            db.collection("individual")
-                    .document(individualItem.getUid())
-                    .collection("my_project")
-                    .document(projectId)
-                    .set(newMyProjectField)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-
-                        }
-                    });
-
         }
+        HashMap<String, Object> newMyProjectField = new HashMap<>();
+        newMyProjectField.put("team_name",teamName);
+        db.collection("individual")
+                .document(individualItem.getUid())
+                .collection("my_project")
+                .document(projectId)
+                .set(newMyProjectField)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
 
+                    }
+                });
+
+
+    }
+    static public TeamListItem getTeamListItem(int position){
+        return teamListItems.get(position);
+    }
+    static public ArrayList<MemberListItem> getMembers(){
+        return memberListItems;
     }
 }
