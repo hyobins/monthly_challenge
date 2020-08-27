@@ -591,11 +591,12 @@
                                     android:text="미리보기 이미지"
                                     android:textStyle="bold"
                                     android:textSize="15dp"
-                                    android:layout_marginRight="170dp"/>
+                                    android:layout_marginRight="180dp"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="3dp"
+                                    android:padding="5dp"
+                                    android:textSize="11dp"
                                     android:background="@drawable/white_round_background"
                                     android:text="파일 선택"/>
                             </LinearLayout>
@@ -630,11 +631,12 @@
                                     android:text="상세 이미지"
                                     android:textStyle="bold"
                                     android:textSize="15dp"
-                                    android:layout_marginRight="203dp"/>
+                                    android:layout_marginRight="210dp"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="3dp"
+                                    android:padding="5dp"
+                                    android:textSize="11dp"
                                     android:background="@drawable/white_round_background"
                                     android:text="파일 선택"/>
                             </LinearLayout>

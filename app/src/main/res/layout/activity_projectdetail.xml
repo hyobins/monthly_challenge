@@ -29,11 +29,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="left"
-
                     android:layout_marginLeft="12dp"
                     android:src="@drawable/back_white" />
-
-
 
                 <ImageView
                     android:id="@+id/imageView10"
@@ -51,8 +48,8 @@
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:gravity="bottom|center_horizontal|center_vertical"
                     android:text="APP"
                     android:textColor="#FE28A2"
@@ -65,7 +62,7 @@
                     android:layout_below="@+id/textView"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="ddddddddddd"
+                    android:text="프로젝트명"
                     android:textColor="#FFFFFF"
                     android:textSize="22dp"
                     android:textStyle="bold" />
@@ -119,7 +116,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/white_half_round_background"
                 android:orientation="vertical">
