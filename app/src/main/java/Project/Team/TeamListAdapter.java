@@ -62,6 +62,12 @@ public class TeamListAdapter extends BaseAdapter {
         textView_teamName.setText((position+1) + "팀 : " + teamListItems.get(position).getTeamName());
         textView_developers.setText(teamListItems.get(position).getApply_developers() + "/" + teamListItems.get(position).getMax_developers());
         textView_designers.setText(teamListItems.get(position).getApply_designers() + "/" + teamListItems.get(position).getMax_designers());
+        imageView_developer1.setImageResource(R.drawable.indivi_nonecolor);
+        imageView_developer2.setImageResource(R.drawable.indivi_nonecolor);
+        imageView_developer3.setImageResource(R.drawable.indivi_nonecolor);
+        imageView_designer1.setImageResource(R.drawable.indivi_nonecolor);
+        imageView_designer2.setImageResource(R.drawable.indivi_nonecolor);
+        imageView_designer3.setImageResource(R.drawable.indivi_nonecolor);
 
         switch (teamListItems.get(position).getMax_developers()){
             case 1 :
