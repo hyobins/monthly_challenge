@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.monthly_challenge.BottomNavigationFragment.*;
@@ -161,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                                     case "종료":
                                         temp = document.get("description").toString();
                                         temp1= temp.replace("*", "\n");
-                                        new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
+                                        endListItem = new ProjectListItem(document.getId(),document.get("title").toString(),document.get("company").toString(), simpleDateFormat.format(document.getTimestamp("deadline").toDate())
                                                 ,document.get("reward").toString(), document.get("direction").toString(), document.get("state").toString(), document.get("submit").toString(),temp1);
                                         endListItems.add(endListItem);
                                         break;
@@ -212,5 +213,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public static IndividualItem getIndividualItem(){
         return individualItem;
     }
+
 
 }

@@ -80,6 +80,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
+    public static MenuFragment newInstance() {
+        return new MenuFragment();
+    }
+
 
     @Nullable
     @Override
@@ -248,7 +252,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         prevView = view;
 
     }
-
 
 
 
