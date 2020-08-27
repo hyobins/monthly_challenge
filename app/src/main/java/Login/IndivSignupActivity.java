@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IndivSignupActivity extends AppCompatActivity {
+public class IndivSignupActivity extends AppCompatActivity implements View.OnClickListener {
     ActivityIndivSignupBinding binding;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -32,6 +33,7 @@ public class IndivSignupActivity extends AppCompatActivity {
     Map<String, Object> progress_project = new HashMap<>();
     Map<String, Object> judge_project = new HashMap<>();
     Map<String, Object> end_project = new HashMap<>();
+    Button prev_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,11 @@ public class IndivSignupActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_indiv_signup);
         binding.setActivity(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        prev_btn = binding.buttonDeveloper;
+        binding.buttonDesigner.setOnClickListener(this);
+        binding.buttonDeveloper.setOnClickListener(this);
+        binding.imageViewBack.setOnClickListener(this);
+        binding.btnCancel.setOnClickListener(this);
     }
 
     public void Click_Join(View view){
@@ -56,11 +63,11 @@ public class IndivSignupActivity extends AppCompatActivity {
 
     private void createUser(String email, String password) {
         //라디오 버튼 값 가져오기
-        int id = binding.radioGroup.getCheckedRadioButtonId();
-        RadioButton rb = findViewById(id);
+//        int id = binding.radioGroup.getCheckedRadioButtonId();
+//        RadioButton rb = findViewById(id);
 
         final String name = binding.editTextName.getText().toString().trim();
-        final String position = rb.getText().toString().trim();
+        final String position = prev_btn.getText().toString().trim();
         final String introduce = binding.editTextIntroduce.getText().toString().trim();
         final String interest = binding.editTextInterest.getText().toString().trim();
         final String profile_url = binding.profileUrl.getText().toString().trim();
@@ -100,5 +107,29 @@ public class IndivSignupActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_developer :
+                prev_btn.setBackgroundResource(R.drawable.round_rectangle);
+                binding.buttonDeveloper.setBackgroundResource(R.drawable.round_blue);
+                prev_btn = binding.buttonDeveloper;
+                break;
+            case R.id.button_designer :
+                prev_btn.setBackgroundResource(R.drawable.round_rectangle);
+                binding.buttonDesigner.setBackgroundResource(R.drawable.round_blue);
+                prev_btn = binding.buttonDesigner;
+                break;
+            case R.id.imageView_back:
+                Intent intent = new Intent(IndivSignupActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.btn_cancel:
+                intent = new Intent(IndivSignupActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+        }
+    }
 }
