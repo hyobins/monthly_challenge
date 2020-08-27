@@ -212,4 +212,5 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public static IndividualItem getIndividualItem(){
         return individualItem;
     }
+
 }
