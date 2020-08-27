@@ -96,16 +96,20 @@ public class MyteamsActivity extends AppCompatActivity {
                                                                             memberListItems.add(memberListItem);
                                                                             System.out.println("사이즈"+memberListItems.size());
                                                                         }
+                                                                        memberListAdapter = new MemberListAdapter(context, memberListItems);
+                                                                        myTeamsList.setAdapter(memberListAdapter);
                                                                     }
+
                                                                 });
+
                                                     }
                                                 }
                                             }
+
                                         }
                                     });
                         }
-                        memberListAdapter = new MemberListAdapter(context, memberListItems);
-                        myTeamsList.setAdapter(memberListAdapter);
+
                     }
                 });
 

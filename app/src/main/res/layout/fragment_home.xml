@@ -1,111 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFF">
-
-
+    android:background="#FFFF"
+    android:fillViewport="true">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="310dp"
-        android:background="@drawable/center_rec"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFF">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="310dp"
+            android:background="@drawable/center_rec"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="left"
+                    android:text="Today"
+                    android:textColor="#FFFF"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="275dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/reward_white" />
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="12dp"
-                android:gravity="left"
-                android:text="Today"
+                android:layout_marginLeft="-227dp"
+                android:layout_marginTop="72dp"
+                android:text="펫니스"
                 android:textColor="#FFFF"
-                android:textSize="25dp"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-163dp"
+                android:layout_marginTop="110dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_horizontal"
+                android:text="반려동물 의료 및 보험서비스\n APP 개발 프로젝트"
+                android:textColor="#FFFF"
+                android:textSize="24dp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-360dp"
+                android:layout_marginTop="232dp"
+                android:text="2020.08.29~2020.10.07"
+                android:textColor="#FFFF"
+                android:textSize="11dp" />
+
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="275dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="216dp"
+                android:layout_marginTop="212dp"
                 android:layout_marginRight="16dp"
-                android:src="@drawable/reward_white" />
-        </LinearLayout>
+                android:src="@drawable/gogog" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="8dp"
+                android:layout_marginLeft="-227dp"
+                android:layout_marginTop="274dp"
+                android:src="@drawable/three_dot" />
+
+
+        </LinearLayout>//트렌드 ui
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-227dp"
-            android:layout_marginTop="72dp"
-            android:text="펫니스"
-            android:textColor="#FFFF"
-            android:textSize="17dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-163dp"
-            android:layout_marginTop="110dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center_horizontal"
-            android:text="반려동물 의료 및 보험서비스\n APP 개발 프로젝트"
-            android:textColor="#FFFF"
-            android:textSize="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="추천 프로젝트"
+            android:textColor="#000000"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
+        <ListView
+            android:id="@+id/HomeProjectListView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-360dp"
-            android:layout_marginTop="232dp"
-            android:text="2020.08.29~2020.10.07"
-            android:textColor="#FFFF"
-            android:textSize="11dp" />
+            android:visibility="gone" />
 
-        <ImageView
-            android:layout_width="48dp"
+        <RelativeLayout
+            android:id="@+id/chat_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/white_round_background"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:elevation="10dp">
+
+            <TextView
+                android:id="@+id/alarm_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="APP"
+                android:textColor="#FE28A2"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_listCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/alarm_category"
+                android:text="세동상사"
+                android:textColor="#000"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/textView_listTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/alarm_category"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="12dp"
+                android:text="상세내용 ㅇㅇㄴㅁㄴㅇㄻㄴㅇㄹ;ㅂ잗ㄻㄴㅇ;리ㅏㅁ넝럼ㄴ;ㅇㄻㅇㄴㄻㄴ이라ㅓ"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/icon_alarm"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_below="@+id/textView_listTitle"
+                android:src="@drawable/icon_alarm" />
+
+            <TextView
+                android:id="@+id/textView_listDeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/icon_alarm"
+                android:layout_toRightOf="@+id/icon_alarm"
+                android:paddingLeft="8dp"
+                android:text="~2020.08.29(D-?일)"
+                android:textColor="#000"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:id="@+id/icon_point"
+                android:layout_width="24dp"
+                android:layout_height="12dp"
+                android:layout_alignBottom="@+id/textView_listDeadline"
+                android:layout_toRightOf="@+id/textView_listDeadline"
+                android:paddingLeft="11dp"
+                android:src="@drawable/icon_point" />
+
+            <TextView
+                android:id="@+id/textView_listReward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/icon_point"
+                android:layout_toRightOf="@+id/icon_point"
+                android:paddingLeft="8dp"
+                android:text="100만원"
+                android:textColor="#000"
+                android:textSize="11sp" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_below="@+id/textView_listReward" />
+
+        </RelativeLayout>
+
+
+
+
+        <Button
+            android:id="@+id/more_project"
+            style="@android:style/Widget.Button"
+            android:layout_width="328dp"
             android:layout_height="48dp"
-            android:layout_marginLeft="216dp"
-            android:layout_marginTop="212dp"
-            android:layout_marginRight="16dp"
-            android:src="@drawable/gogog" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="8dp"
-            android:layout_marginLeft="-227dp"
-            android:layout_marginTop="274dp"
-            android:src="@drawable/three_dot" />
-
-
-    </LinearLayout>//트렌드 ui
-
-
-    <ListView
-        android:id="@+id/HomeProjectListView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
-    <Button
-        android:id="@+id/more_project"
-        style="@android:style/Widget.Button"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/signup"
-        android:text="프로젝트 더보기"
-        android:textColor="#FFFFFF"
-        android:textSize="14dp"
-        android:textStyle="bold" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/signup"
+            android:text="프로젝트 더보기"
+            android:textColor="#FFFFFF"
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
 
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

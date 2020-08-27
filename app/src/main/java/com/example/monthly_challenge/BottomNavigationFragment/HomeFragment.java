@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,14 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.HomeProjectListView)
     ListView HomeProjectListView;
+    @BindView(R.id.textView_listCompany)
+    TextView textView_listComapny0;
+    @BindView(R.id.textView_listTitle)
+    TextView textView_listTitle0;
+    @BindView(R.id.textView_listReward)
+    TextView textView_listReward0;
+    @BindView(R.id.textView_listDeadline)
+    TextView textView_listDedline0;
 
     HomeProjectAdapter homeProjectAdapter;
 
@@ -46,10 +55,14 @@ public class HomeFragment extends Fragment {
             System.out.println("진행중인 프로젝트"+ progressListItems.get(i).getProjectId());
             System.out.println("이건?");
         }
+        textView_listTitle0.setText(progressListItems.get(0).getTitle());
+        textView_listComapny0.setText(progressListItems.get(0).getCompany());
+        textView_listDedline0.setText(progressListItems.get(0).getDeadline());
+        textView_listReward0.setText(progressListItems.get(0).getReward());
 
 
-        homeProjectAdapter = new HomeProjectAdapter(context, progressListItems);
-        HomeProjectListView.setAdapter(homeProjectAdapter);
+//        homeProjectAdapter = new HomeProjectAdapter(context, progressListItems);
+//        HomeProjectListView.setAdapter(homeProjectAdapter);
 
 
 

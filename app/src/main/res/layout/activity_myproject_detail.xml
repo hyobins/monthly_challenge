@@ -270,7 +270,6 @@
                                     android:id="@+id/textView_companyContents"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="iHQ"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
@@ -329,7 +328,6 @@
                                     android:id="@+id/textView_descriptionContents"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="TextView"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
@@ -386,7 +384,6 @@
                                     android:id="@+id/textView_directionContents"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="TextView"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
