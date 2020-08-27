@@ -1,41 +1,39 @@
-package Profile;
+package Project.Team;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListView;
+import android.view.View;
 
 import com.example.monthly_challenge.R;
+import com.example.monthly_challenge.databinding.ActivityTeamDetailPopupBinding;
+import com.example.monthly_challenge.databinding.ActivityTeampopupBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import Project.Team.MemberListAdapter;
-import Project.Team.MemberListItem;
-import Project.Team.TeamListAdapter;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import Profile.IndividualItem;
+import Project.ProjectDetailActivity;
 
-import static java.lang.System.*;
-
-public class MyteamsActivity extends AppCompatActivity {
-    Context context = this;
-    String projectId;
+public class TeamDetailPopupActivity extends AppCompatActivity implements View.OnClickListener {
+    ActivityTeamDetailPopupBinding binding;
+    int position;
+    ArrayList<MemberListItem> members;
+    ArrayList<TeamListItem> team;
     String teamName;
-
-    @BindView(R.id.MyTeamsList)
-    ListView myTeamsList;
-
-    //members id 임시저장
+    String projectId;
+    int k;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     ArrayList<String> MemberIDLists = new ArrayList<String>();
 
     MemberListAdapter memberListAdapter;
@@ -45,14 +43,16 @@ public class MyteamsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myteams);
-        ButterKnife.bind(this);
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_team_detail_popup);
+        binding.setActivity(this);
         Intent intent = getIntent();
-        projectId = intent.getExtras().getString("projectId");
+        position = intent.getExtras().getInt("position");
         teamName = intent.getExtras().getString("teamName");
+        projectId = intent.getExtras().getString("projectId");
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        members = new ArrayList<>();
+        team = new ArrayList<>();
+        team.add(ProjectDetailActivity.getTeamListItem(position)) ;
 
         db.collection("project")
                 .document(projectId)
@@ -96,6 +96,8 @@ public class MyteamsActivity extends AppCompatActivity {
                                                                             memberListItems.add(memberListItem);
                                                                             System.out.println("사이즈"+memberListItems.size());
                                                                         }
+                                                                        memberListAdapter = new MemberListAdapter(getApplicationContext(), memberListItems);
+                                                                        binding.listViewTeamMembers.setAdapter(memberListAdapter);
                                                                     }
                                                                 });
                                                     }
@@ -104,13 +106,36 @@ public class MyteamsActivity extends AppCompatActivity {
                                         }
                                     });
                         }
-                        memberListAdapter = new MemberListAdapter(context, memberListItems);
-                        myTeamsList.setAdapter(memberListAdapter);
+//                        memberListAdapter = new MemberListAdapter(getApplicationContext(), memberListItems);
+//                        binding.listViewTeamMembers.setAdapter(memberListAdapter);
                     }
                 });
 
+        TeamListAdapter teamListAdapter = new TeamListAdapter(getApplicationContext(), team);
+        binding.listViewTeamInfo.setAdapter(teamListAdapter);
+        binding.imageViewBack.setOnClickListener(this);
+        binding.buttonApply.setOnClickListener(this);
 
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.imageView_back :
+                finish();
+                break;
+            case R.id.button_apply :
+                Intent intent = new Intent();
+                intent.putExtra("position",position);
+                intent.putExtra("teamName",teamName);
+
+                setResult(RESULT_OK, intent);
+
+                finish();
+
+                break;
+        }
     }
 }
