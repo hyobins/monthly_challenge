@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:id="@+id/chat_template"
                 android:layout_width="wrap_content"
@@ -60,7 +61,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/alarm_category"
-                        android:text="세동상사"
+                        android:text="(주)호경"
                         android:textColor="#000"
                         android:textSize="11sp" />
 
@@ -71,7 +72,7 @@
                         android:layout_below="@+id/alarm_category"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="12dp"
-                        android:text="상세내용 ㅇㅇㄴㅁㄴㅇㄻㄴㅇㄹ;ㅂ잗ㄻㄴㅇ;리ㅏㅁ넝럼ㄴ;ㅇㄻㅇㄴㄻㄴ이라ㅓ"
+                        android:text="관공서 및 호텔 시스템 모바일 iOS 앱 개발"
                         android:textColor="#000"
                         android:textSize="15sp" />
 
@@ -89,7 +90,7 @@
                         android:layout_alignBottom="@+id/icon_alarm"
                         android:layout_toRightOf="@+id/icon_alarm"
                         android:paddingLeft="8dp"
-                        android:text="~2020.08.29(D-?일)"
+                        android:text="2020.09.07"
                         android:textColor="#000"
                         android:textSize="11sp" />
 
@@ -109,7 +110,7 @@
                         android:layout_alignBottom="@+id/icon_point"
                         android:layout_toRightOf="@+id/icon_point"
                         android:paddingLeft="8dp"
-                        android:text="100만원"
+                        android:text="32300000"
                         android:textColor="#000"
                         android:textSize="11sp" />
 
@@ -147,12 +148,379 @@
                     android:layout_marginLeft="6dp"
                     android:layout_marginTop="8dp"
                     android:layout_toRightOf="@+id/icon_date"
-                    android:text="2020.08.17 22:20:17"
+                    android:text="2020.08.19 18:22"
+                    android:textColor="#000"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/chat_template02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:id="@+id/chat_box02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/white_round_background"
+                    android:elevation="10dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/alarm_category02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:text="APP"
+                        android:textColor="#FE28A2"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/corporation_name02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/alarm_category02"
+                        android:text="(주)대일"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/alarm_contents02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/alarm_category02"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="JAVA 기반 대기업 플랫폼 개발"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/icon_alarm02"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_below="@+id/alarm_contents02"
+                        android:src="@drawable/icon_alarm" />
+
+                    <TextView
+                        android:id="@+id/project_deadline02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/icon_alarm02"
+                        android:layout_toRightOf="@+id/icon_alarm02"
+                        android:paddingLeft="8dp"
+                        android:text="2020.10.20"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <ImageView
+                        android:id="@+id/icon_point02"
+                        android:layout_width="24dp"
+                        android:layout_height="12dp"
+                        android:layout_alignBottom="@+id/project_deadline02"
+                        android:layout_toRightOf="@+id/project_deadline02"
+                        android:paddingLeft="11dp"
+                        android:src="@drawable/icon_point" />
+
+                    <TextView
+                        android:id="@+id/prize_size02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/icon_point02"
+                        android:layout_toRightOf="@+id/icon_point02"
+                        android:paddingLeft="8dp"
+                        android:text="34800000"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/icon_alarm02"
+                        android:layout_marginTop="10dp"
+                        android:background="#9B9B9B" />
+
+                    <TextView
+                        android:id="@+id/chat_category02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/icon_alarm02"
+                        android:layout_marginTop="20dp"
+                        android:text="신규 프로젝트가 업데이트되었습니다"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/icon_date02"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_below="@+id/chat_box02"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle" />
+
+                <TextView
+                    android:id="@+id/date02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/icon_date02"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/icon_date02"
+                    android:text="2020.08.19 20:22"
+                    android:textColor="#000"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/chat_template03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:id="@+id/chat_box03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/white_round_background"
+                    android:elevation="10dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/alarm_category03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:text="APP"
+                        android:textColor="#FE28A2"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/corporation_name03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/alarm_category03"
+                        android:text="(주)와이즈키즈"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/alarm_contents03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/alarm_category03"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="영어교육용 Android 네이티브 앱 구축"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/icon_alarm03"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_below="@+id/alarm_contents03"
+                        android:src="@drawable/icon_alarm" />
+
+                    <TextView
+                        android:id="@+id/project_deadline03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/icon_alarm03"
+                        android:layout_toRightOf="@+id/icon_alarm03"
+                        android:paddingLeft="8dp"
+                        android:text="2020.09.15"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <ImageView
+                        android:id="@+id/icon_point03"
+                        android:layout_width="24dp"
+                        android:layout_height="12dp"
+                        android:layout_alignBottom="@+id/project_deadline03"
+                        android:layout_toRightOf="@+id/project_deadline03"
+                        android:paddingLeft="11dp"
+                        android:src="@drawable/icon_point" />
+
+                    <TextView
+                        android:id="@+id/prize_size03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/icon_poin03"
+                        android:layout_toRightOf="@+id/icon_point03"
+                        android:paddingLeft="8dp"
+                        android:text="30000000"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/icon_alarm03"
+                        android:layout_marginTop="10dp"
+                        android:background="#9B9B9B" />
+
+                    <TextView
+                        android:id="@+id/chat_category03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/icon_alarm03"
+                        android:layout_marginTop="20dp"
+                        android:text="신규 프로젝트가 업데이트되었습니다"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/icon_date03"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_below="@+id/chat_box03"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle" />
+
+                <TextView
+                    android:id="@+id/date03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/icon_date03"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/icon_date03"
+                    android:text="2020.08.20 13:22"
+                    android:textColor="#000"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/chat_template04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:id="@+id/chat_box04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/white_round_background"
+                    android:elevation="10dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/alarm_category04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:text="APP"
+                        android:textColor="#FE28A2"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/corporation_name04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/alarm_category04"
+                        android:text="CTV"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/alarm_contents04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/alarm_category04"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="JS기반 지능형 관제 솔루션 개발"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/icon_alarm04"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_below="@+id/alarm_contents04"
+                        android:src="@drawable/icon_alarm" />
+
+                    <TextView
+                        android:id="@+id/project_deadline04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/icon_alarm04"
+                        android:layout_toRightOf="@+id/icon_alarm04"
+                        android:paddingLeft="8dp"
+                        android:text="2020.09.19"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <ImageView
+                        android:id="@+id/icon_point04"
+                        android:layout_width="24dp"
+                        android:layout_height="12dp"
+                        android:layout_alignBottom="@+id/project_deadline04"
+                        android:layout_toRightOf="@+id/project_deadline04"
+                        android:paddingLeft="11dp"
+                        android:src="@drawable/icon_point" />
+
+                    <TextView
+                        android:id="@+id/prize_size04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/icon_poin04"
+                        android:layout_toRightOf="@+id/icon_point04"
+                        android:paddingLeft="8dp"
+                        android:text="15000000"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/icon_alarm04"
+                        android:layout_marginTop="10dp"
+                        android:background="#9B9B9B" />
+
+                    <TextView
+                        android:id="@+id/chat_category04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/icon_alarm04"
+                        android:layout_marginTop="20dp"
+                        android:text="신규 프로젝트가 업데이트되었습니다"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/icon_date04"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_below="@+id/chat_box04"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle" />
+
+                <TextView
+                    android:id="@+id/date04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/icon_date04"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/icon_date04"
+                    android:text="2020.08.20 17:52"
                     android:textColor="#000"
                     android:textSize="11sp" />
             </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>
+
 
 </LinearLayout>
