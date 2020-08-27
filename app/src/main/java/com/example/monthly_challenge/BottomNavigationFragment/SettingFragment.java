@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import Login.LoginActivity;
 import Profile.IndividualItem;
+import Profile.MypointActivity;
 import Profile.MyprojectActivity;
 import Profile.ProfileActivity;
 import butterknife.BindView;
@@ -70,35 +71,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         intent.putExtra("interest",individualItem.getInterest());
         intent.putExtra("profile_url",individualItem.getProfile_url());
 
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        String uid = user.getUid();
-//
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        DocumentReference reference = db.collection("individual").document(uid);
-//        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if(task.isSuccessful()){
-//                    DocumentSnapshot document = task.getResult();
-//                    if(document != null){
-//
-//                        position.setText(document.getString("position"));
-//                        name.setText(document.getString("name"));
-//                        email.setText(document.getString("email"));
-//
-//                        intent = new Intent(getActivity() , ProfileActivity.class);
-//                        intent.putExtra("position", document.getString("position"));
-//                        intent.putExtra("name", document.getString("name"));
-//                        intent.putExtra("email", document.getString("email"));
-//
-//                        intent.putExtra("introduce",document.getString("introduce"));
-//                        intent.putExtra("interest",document.getString("interest"));
-//                        intent.putExtra("profile_url",document.getString("profile_url"));
-//
-//                    }
-//                }
-//            }
-//        });
 
         return viewGroup;
     }
@@ -107,7 +79,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.profile:
-
                 startActivity(intent);
                 break;
             case R.id.my_project:
@@ -118,6 +89,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                 FirebaseAuth.getInstance().signOut();
                 Intent logout_intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(logout_intent);
+                break;
+            case R.id.my_point:
+                Intent mypoint_intent = new Intent(getActivity(), MypointActivity.class);
+                startActivity(mypoint_intent);
                 break;
         }
     }

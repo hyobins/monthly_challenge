@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/projectDetailView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/projectdetail"
+    android:fillViewport="true"
+    android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/back_white" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/textView"
+                android:gravity="center"
+                android:text="현재 포인트"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginRight="110dp"
+            android:weightSum="10"
+            android:background="@drawable/gray_round_background"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_weight="1"
+                android:padding="3dp"
+                android:id="@+id/reward"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingLeft="23dp"
+                android:src="@drawable/reward" />
+
+            <TextView
+                android:id="@+id/rewardText"
+                android:text="1,850,000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:textColor="#303030"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/white_half_round_background"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:padding="6dp">
+
+                            <RelativeLayout
+                                android:id="@+id/box1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginRight="12dp"
+                                android:background="@drawable/white_round_background"
+                                android:elevation="10dp"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/company1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="(주)무한"
+                                    android:textColor="#FE28A2"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/reward1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/company1"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="15dp"
+                                    android:text="+ 500,000"
+                                    android:textColor="#000"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/company1"
+                                    android:layout_toRightOf="@+id/reward1"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    android:text="날씨 정보 제공 안드로이드 앱 개발"
+                                    android:textColor="#000"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_below="@+id/reward1"
+                                    android:background="#9B9B9B" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/reward1"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="10sp"
+                                    android:text="잔액 1,850,000"
+                                    android:textColor="#000"
+                                    android:textSize="13sp" />
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:id="@+id/date1"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_below="@+id/box1"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/circle" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/date1"
+                                android:layout_marginLeft="6dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_toRightOf="@+id/date1"
+                                android:text="2020.07.05"
+                                android:textColor="#000"
+                                android:textSize="11sp" />
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:padding="6dp">
+
+                            <RelativeLayout
+                                android:id="@+id/box2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginRight="12dp"
+                                android:background="@drawable/white_round_background"
+                                android:elevation="10dp"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/company2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="(주)무한"
+                                    android:textColor="#FE28A2"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/reward2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/company2"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="15dp"
+                                    android:text="+ 350,000"
+                                    android:textColor="#000"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/company2"
+                                    android:layout_toRightOf="@+id/reward2"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    android:text="react기반 클라우드 통합 개발"
+                                    android:textColor="#000"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_below="@+id/reward2"
+                                    android:background="#9B9B9B" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/reward2"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="10sp"
+                                    android:text="잔액 1,350,000"
+                                    android:textColor="#000"
+                                    android:textSize="13sp" />
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:id="@+id/date2"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_below="@+id/box2"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/circle" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/date2"
+                                android:layout_marginLeft="6dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_toRightOf="@+id/date2"
+                                android:text="2020.04.05"
+                                android:textColor="#000"
+                                android:textSize="11sp" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:padding="6dp">
+
+                            <RelativeLayout
+                                android:id="@+id/box3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginRight="12dp"
+                                android:background="@drawable/white_round_background"
+                                android:elevation="10dp"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/company3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="(주)무한"
+                                    android:textColor="#FE28A2"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/reward3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/company3"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="15dp"
+                                    android:text="+ 700,000"
+                                    android:textColor="#000"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/company3"
+                                    android:layout_toRightOf="@+id/reward3"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    android:text="타오바오 API 연동 및 정보 제공 웹 개발"
+                                    android:textColor="#000"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_below="@+id/reward3"
+                                    android:background="#9B9B9B" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/reward3"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="10sp"
+                                    android:text="잔액 1,000,000"
+                                    android:textColor="#000"
+                                    android:textSize="13sp" />
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:id="@+id/date3"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_below="@+id/box3"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/circle" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/date3"
+                                android:layout_marginLeft="6dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_toRightOf="@+id/date3"
+                                android:text="2019.12.30"
+                                android:textColor="#000"
+                                android:textSize="11sp" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp">
+
+                            <RelativeLayout
+                                android:id="@+id/box4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginRight="12dp"
+                                android:background="@drawable/white_round_background"
+                                android:elevation="10dp"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/company4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="(주)무한"
+                                    android:textColor="#FE28A2"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/reward4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/company4"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="15dp"
+                                    android:text="+ 300,000"
+                                    android:textColor="#000"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/company4"
+                                    android:layout_toRightOf="@+id/reward4"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    android:text="반려동물 앱 가맹점용 프론트엔드 개발"
+                                    android:textColor="#000"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_below="@+id/reward4"
+                                    android:background="#9B9B9B" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/reward4"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="10sp"
+                                    android:text="잔액 300,000"
+                                    android:textColor="#000"
+                                    android:textSize="13sp" />
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:id="@+id/date4"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_below="@+id/box4"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/circle" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/date4"
+                                android:layout_marginLeft="6dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_toRightOf="@+id/date4"
+                                android:text="2019.11.05"
+                                android:textColor="#000"
+                                android:textSize="11sp" />
+                        </RelativeLayout>
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+</ScrollView>
+
+
+
+
