@@ -55,13 +55,17 @@
         </RelativeLayout>
 
 
-
         <LinearLayout
             android:id="@+id/profile"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:weightSum="10"
-            android:orientation="horizontal">
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
             <ImageView
                 android:id="@+id/imageView16"
                 android:layout_width="48dp"
@@ -76,70 +80,85 @@
                 android:layout_gravity="center_vertical"
                 android:text="프로필"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/my_point"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:weightSum="10"
-            android:orientation="horizontal">
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_weight="0.2"
                 android:padding="12dp"
                 android:src="@drawable/icon_point" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="내 포인트"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/my_project"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:weightSum="10"
-            android:orientation="horizontal">
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_weight="0.2"
                 android:padding="12dp"
                 android:src="@drawable/icon_project" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="My 프로젝트"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:weightSum="10"
-            android:orientation="horizontal">
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_weight="0.2"
                 android:padding="12dp"
                 android:src="@drawable/icon_logout" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="로그아웃"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
         </LinearLayout>
 
 

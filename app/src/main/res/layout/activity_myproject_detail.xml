@@ -243,6 +243,7 @@
                                     android:gravity="center_vertical"
                                     android:paddingLeft="8dp"
                                     android:text="기업명"
+                                    android:textColor="#000000"
                                     android:textSize="14dp"
                                     android:textStyle="bold" />
 
@@ -262,6 +263,7 @@
                                     android:id="@+id/textView_companyContents"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:textColor="#000000"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
@@ -302,6 +304,7 @@
                                     android:gravity="center_vertical"
                                     android:paddingLeft="8dp"
                                     android:text="서비스 설명"
+                                    android:textColor="#000000"
                                     android:textSize="14dp"
                                     android:textStyle="bold" />
 
@@ -320,6 +323,7 @@
                                     android:id="@+id/textView_descriptionContents"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:textColor="#000000"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
@@ -358,6 +362,7 @@
                                     android:gravity="center_vertical"
                                     android:paddingLeft="8dp"
                                     android:text="개발 및 디자인 방향"
+                                    android:textColor="#000000"
                                     android:textSize="14dp"
                                     android:textStyle="bold" />
 
@@ -376,6 +381,7 @@
                                     android:id="@+id/textView_directionContents"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:textColor="#000000"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
@@ -445,212 +451,287 @@
                     </LinearLayout>
 
                     //제출 상세 레이아웃
+
                     <LinearLayout
                         android:id="@+id/submitLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#e6e6e6"
                             android:layout_marginBottom="7dp"
-                            android:padding="10dp">
+                            android:background="#e6e6e6"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
                             <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="30dp"
-                                android:layout_marginRight="7dp"
-                                android:src="@drawable/projectdetail_email"/>
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/projectdetail_email" />
+
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="3"
                                 android:gravity="center_vertical"
-                                android:textStyle="bold"
-                                android:text="제출 주소:   "/>
+                                android:text="제출 주소:   "
+                                android:textColor="#000000"
+                                android:textStyle="bold" />
+
                             <TextView
                                 android:id="@+id/submitEmail"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
-                                android:textStyle="bold"
-                                android:text="email" />
+                                android:layout_gravity="center"
+                                android:layout_weight="12"
+                                android:gravity="center_vertical"
+                                android:text="email"
+                                android:textColor="#000000" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
                             android:layout_marginBottom="7dp"
                             android:background="#e6e6e6"
-                            android:orientation="vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp">
+
                                 <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_marginRight="10dp"
-                                    android:src="@drawable/projectdetail_service"/>
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/projectdetail_service" />
+
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="15"
                                     android:text="작품제목"
-                                    android:textStyle="bold"
-                                    android:textSize="15dp"/>
+                                    android:textColor="#000000"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="35dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/white_round_background"
                                 android:gravity="center_horizontal|center_vertical"
                                 android:text="작품 제목을 입력하세요(60자 이내)"
-                                android:textSize="15dp"
-                                android:background="@drawable/white_round_background"/>
+                                android:textSize="13dp" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
                             android:layout_marginBottom="7dp"
                             android:background="#e6e6e6"
-                            android:orientation="vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp">
+
                                 <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_marginRight="10dp"
-                                    android:src="@drawable/icon_profile"/>
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/icon_profile" />
+
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="15"
                                     android:text="작품 설명"
-                                    android:textStyle="bold"
-                                    android:textSize="15dp"/>
+                                    android:textColor="#000000"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="35dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/white_round_background"
                                 android:gravity="center_horizontal|center_vertical"
                                 android:text="작품 설명을 입력하세요(500자 이내)"
-                                android:textSize="15dp"
-                                android:background="@drawable/white_round_background"/>
+                                android:textSize="13dp" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#e6e6e6"
                             android:layout_marginBottom="7dp"
+                            android:background="#e6e6e6"
                             android:orientation="horizontal"
-                            android:padding="10dp">
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
                             <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="30dp"
-                                android:layout_marginRight="7dp"
-                                android:src="@drawable/icon_title"/>
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/icon_title" />
+
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
+                                android:layout_weight="11"
                                 android:gravity="center_vertical"
-                                android:textStyle="bold"
-                                android:layout_marginRight="160dp"
-                                android:text="스톡 컨텐츠 포함여부 :   "/>
+                                android:text="스톡 컨텐츠 포함여부 :   "
+                                android:textColor="#000000"
+                                android:textSize="14dp"
+                                android:textStyle="bold" />
+
                             <ImageView
-                                android:layout_width="50dp"
+                                android:layout_width="0dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/icon_check"/>
-
-
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="4"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="3dp"
+                                android:src="@drawable/icon_check" />
 
 
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
                             android:layout_marginBottom="7dp"
                             android:background="#e6e6e6"
-                            android:orientation="vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp">
+
                                 <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_marginRight="10dp"
-                                    android:src="@drawable/icon_imgsubmit"/>
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/icon_imgsubmit" />
+
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="11"
                                     android:text="미리보기 이미지"
-                                    android:textStyle="bold"
-                                    android:textSize="15dp"
-                                    android:layout_marginRight="180dp"/>
+                                    android:textColor="#000000"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:padding="5dp"
-                                    android:textSize="11dp"
+                                    android:layout_marginRight="15dp"
+                                    android:layout_weight="4"
                                     android:background="@drawable/white_round_background"
-                                    android:text="파일 선택"/>
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="파일 선택"
+                                    android:textColor="#000000"
+                                    android:textSize="11dp" />
                             </LinearLayout>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="35dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/white_round_background"
                                 android:gravity="center_horizontal|center_vertical"
                                 android:text="선택된 파일 없음(최대 600*600px)"
-                                android:textSize="15dp"
-                                android:background="@drawable/white_round_background"/>
+                                android:textSize="13dp" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
                             android:layout_marginBottom="7dp"
                             android:background="#e6e6e6"
-                            android:orientation="vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp">
+
                                 <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_marginRight="10dp"
-                                    android:src="@drawable/icon_imgsubmit"/>
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/icon_imgsubmit" />
+
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="11"
                                     android:text="상세 이미지"
-                                    android:textStyle="bold"
-                                    android:textSize="15dp"
-                                    android:layout_marginRight="210dp"/>
+                                    android:textColor="#000000"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:padding="5dp"
-                                    android:textSize="11dp"
+                                    android:layout_marginRight="15dp"
+                                    android:layout_weight="4"
                                     android:background="@drawable/white_round_background"
-                                    android:text="파일 선택"/>
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="파일 선택"
+                                    android:textColor="#000000"
+                                    android:textSize="11dp" />
                             </LinearLayout>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="35dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/white_round_background"
                                 android:gravity="center_horizontal|center_vertical"
                                 android:text="선택된 파일 없음(RGB 형식의 JPG)"
-                                android:textSize="15dp"
-                                android:background="@drawable/white_round_background"/>
+                                android:textSize="13dp" />
                         </LinearLayout>
-
-
-
 
 
                     </LinearLayout>
