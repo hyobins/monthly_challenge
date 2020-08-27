@@ -436,7 +436,7 @@
                         android:layout_marginLeft="40dp"
                         android:layout_marginRight="40dp"
                         android:layout_weight="1"
-                        android:background="#000000"
+                        android:background="#86D6D6D6"
                         android:visibility="invisible" />
                 </LinearLayout>
 
@@ -463,7 +463,7 @@
                         android:layout_marginLeft="40dp"
                         android:layout_marginRight="40dp"
                         android:layout_weight="1"
-                        android:background="#000000"
+                        android:background="#86D6D6D6"
                         android:visibility="invisible" />
                 </LinearLayout>
             </LinearLayout>
