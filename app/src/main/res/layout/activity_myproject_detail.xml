@@ -218,7 +218,7 @@
                         android:layout_height="match_parent"
                         android:background="#FFFFFF"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="visible"> //초기 visible
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -516,14 +516,6 @@
                             android:orientation="vertical"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp">
-                            <TextView
-                                android:id="@+id/myTeamName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="16dp"
-                                android:text="팀 이름"
-                                android:textSize="15sp"
-                                android:textStyle="bold"/>
 
                             <ListView
                                 android:id="@+id/listView_teamList"
@@ -534,30 +526,216 @@
 
                         </LinearLayout>
                     </LinearLayout>
-                    //우리 팀
 
+                    //제출 상세 레이아웃
                     <LinearLayout
                         android:id="@+id/submitLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#FFFFFF"
-                        android:padding="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="제출 주소: "
-                            android:textStyle="bold"
-                            android:textSize="20dp"/>
-                        <TextView
-                            android:id="@+id/submitEmail"
-                            android:layout_width="wrap_content"
+                            android:background="#e6e6e6"
+                            android:layout_marginBottom="7dp"
+                            android:padding="10dp">
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="30dp"
+                                android:layout_marginRight="7dp"
+                                android:src="@drawable/projectdetail_email"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:textStyle="bold"
+                                android:text="제출 주소:   "/>
+                            <TextView
+                                android:id="@+id/submitEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:textStyle="bold"
+                                android:text="email" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center_vertical"
+                            android:padding="10dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="#e6e6e6"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginRight="10dp"
+                                    android:src="@drawable/projectdetail_service"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="작품제목"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"/>
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:text="작품 제목을 입력하세요(60자 이내)"
+                                android:textSize="15dp"
+                                android:background="@drawable/white_round_background"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center_vertical"
+                            android:padding="10dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="#e6e6e6"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginRight="10dp"
+                                    android:src="@drawable/icon_profile"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="작품 설명"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"/>
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:text="작품 설명을 입력하세요(500자 이내)"
+                                android:textSize="15dp"
+                                android:background="@drawable/white_round_background"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="email"
-                            android:textSize="20dp"/>
+                            android:background="#e6e6e6"
+                            android:layout_marginBottom="7dp"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="30dp"
+                                android:layout_marginRight="7dp"
+                                android:src="@drawable/icon_title"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="center_vertical"
+                                android:textStyle="bold"
+                                android:layout_marginRight="160dp"
+                                android:text="스톡 컨텐츠 포함여부 :   "/>
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/icon_check"/>
+
+
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center_vertical"
+                            android:padding="10dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="#e6e6e6"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginRight="10dp"
+                                    android:src="@drawable/icon_imgsubmit"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="미리보기 이미지"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:layout_marginRight="170dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="3dp"
+                                    android:background="@drawable/white_round_background"
+                                    android:text="파일 선택"/>
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:text="선택된 파일 없음(최대 600*600px)"
+                                android:textSize="15dp"
+                                android:background="@drawable/white_round_background"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center_vertical"
+                            android:padding="10dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="#e6e6e6"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginRight="10dp"
+                                    android:src="@drawable/icon_imgsubmit"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="상세 이미지"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:layout_marginRight="203dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="3dp"
+                                    android:background="@drawable/white_round_background"
+                                    android:text="파일 선택"/>
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:text="선택된 파일 없음(RGB 형식의 JPG)"
+                                android:textSize="15dp"
+                                android:background="@drawable/white_round_background"/>
+                        </LinearLayout>
+
+
+
+
+
                     </LinearLayout>
-                    //제출 상세 레이아웃
+
 
                 </LinearLayout>
             </LinearLayout>
