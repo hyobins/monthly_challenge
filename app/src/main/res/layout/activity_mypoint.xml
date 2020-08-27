@@ -41,7 +41,6 @@
                     android:id="@+id/titleText"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:layout_below="@+id/textView"
                     android:gravity="center"
                     android:text="현재 포인트"
                     android:textColor="#FFFFFF"
