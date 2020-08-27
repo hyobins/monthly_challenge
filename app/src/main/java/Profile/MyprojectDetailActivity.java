@@ -100,12 +100,16 @@ public class MyprojectDetailActivity extends AppCompatActivity implements View.O
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                             if(task.isSuccessful()){
                                                 DocumentSnapshot document = task.getResult();
-                                                teamListItem = new TeamListItem(document.getId(), Integer.valueOf(document.get("max_designers").toString()),Integer.valueOf(document.get("max_developers").toString())
-                                                        ,Integer.valueOf(document.get("apply_designers").toString()),Integer.valueOf(document.get("apply_developers").toString()), document.get("openchat_url").toString());
+                                                assert document != null;
+                                                teamListItem = new TeamListItem(document.getId(),
+                                                        Integer.parseInt(Objects.requireNonNull(document.get("max_designers")).toString()),
+                                                        Integer.parseInt(Objects.requireNonNull(document.get("max_developers")).toString()),
+                                                        Integer.parseInt(Objects.requireNonNull(document.get("apply_designers")).toString()),
+                                                        Integer.parseInt(Objects.requireNonNull(document.get("apply_developers")).toString()),
+                                                        Objects.requireNonNull(document.get("openchat_url")).toString());
                                                 teamListItems.add(teamListItem);
                                                 //카카오링크
-                                                binding.openchatURL.setText(document.get("openchat_url").toString());
-                                                //teamListItem.getOpenchat_url();
+                                                binding.openchatURL.setText(Objects.requireNonNull(document.get("openchat_url")).toString());
 
                                             }
                                             adapter = new TeamListAdapter(context, teamListItems);
