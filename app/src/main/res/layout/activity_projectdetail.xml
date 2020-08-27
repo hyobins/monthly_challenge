@@ -492,15 +492,16 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp">
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="3">
 
 
                             <ListView
                                 android:id="@+id/listView_teamList"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:background="#FFFFFF">
 
                             </ListView>
@@ -510,7 +511,8 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:orientation="vertical">
 
                             <Button
@@ -518,10 +520,10 @@
                                 android:layout_width="335dp"
                                 android:layout_height="44dp"
                                 android:layout_gravity="center"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="30dp"
-                                android:layout_marginRight="20dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="25dp"
+                                android:layout_marginBottom="20dp"
                                 android:layout_weight="1"
                                 android:background="@drawable/signup"
                                 android:gravity="center_vertical"
@@ -534,7 +536,7 @@
                             <View
                                 android:id="@+id/view4"
                                 android:layout_width="match_parent"
-                                android:layout_height="180dp"
+                                android:layout_height="1dp"
                                 android:layout_weight="1"
                                 android:background="#FFFFFF" />
 
