@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 
 public class MemberListAdapter extends BaseAdapter {
     @BindView(R.id.listview_position) TextView positions;
-    @BindView(R.id.listview_name) TextView name;
+//    @BindView(R.id.listview_name) TextView name;
     @BindView(R.id.listview_email) TextView email;
     @BindView(R.id.listview_profileurl) TextView profile_url;
     @BindView(R.id.listview_introduce) TextView introduce;
@@ -52,7 +52,7 @@ public class MemberListAdapter extends BaseAdapter {
         ButterKnife.bind(this, view);
 
         positions.setText(memberListItems.get(position).getMemberPosition());
-        name.setText(memberListItems.get(position).getMemberName());
+//        name.setText(memberListItems.get(position).getMemberName());
         email.setText(memberListItems.get(position).getMemberEmail());
         profile_url.setText(memberListItems.get(position).getMemberProfile());
         introduce.setText(memberListItems.get(position).getMemberIntroduce());

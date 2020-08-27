@@ -30,7 +30,7 @@
                     android:padding="10dp">
 
                     <TextView
-                        android:id="@+id/user_position"
+                        android:id="@+id/listview_position"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
@@ -41,10 +41,10 @@
 
 
                     <TextView
-                        android:id="@+id/alarm_contents"
+                        android:id="@+id/listview_introduce"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/user_position"
+                        android:layout_below="@+id/listview_position"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="6dp"
                         android:text="상세내용 ㅇㅇㄴㅁㄴㅇㄻㄴㅇㄹ;ㅂ잗ㄻㄴㅇ;리ㅏㅁ넝럼ㄴ;ㅇㄻㅇㄴㄻㄴ이라ㅓ"
@@ -54,14 +54,14 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_below="@+id/alarm_contents"
+                        android:layout_below="@+id/listview_introduce"
                         android:background="#9B9B9B" />
 
                     <TextView
-                        android:id="@+id/chat_category"
+                        android:id="@+id/listview_profileurl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/alarm_contents"
+                        android:layout_below="@+id/listview_introduce"
                         android:layout_marginTop="12dp"
                         android:text="신규 프로젝트가 업데이트되었습니다"
                         android:textColor="#000"
@@ -77,7 +77,7 @@
                     android:background="@drawable/circle" />
 
                 <TextView
-                    android:id="@+id/name"
+                    android:id="@+id/listview_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/icon_date"
