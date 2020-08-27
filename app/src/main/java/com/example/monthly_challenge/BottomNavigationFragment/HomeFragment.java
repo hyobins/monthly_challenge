@@ -83,6 +83,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     HomeProjectAdapter homeProjectAdapter;
 
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
+
 
     @Nullable
     @Override
@@ -126,7 +130,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //        HomeProjectListView.setAdapter(homeProjectAdapter);
 
 
-
         return viewGroup;
     }
 
@@ -134,7 +137,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.more_project:
-
                 break;
         }
     }
