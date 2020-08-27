@@ -84,6 +84,10 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.button_check :
                 String teamName = binding.editTextTeamName.getText().toString();
+                if(teamName.equals("")){
+                    Toast.makeText(getApplicationContext(), "팀 이름을 입력해 주세요", Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 if(teamListItems.size() == 0){
                     Toast.makeText(getApplicationContext(), "사용 가능한 이름 입니다", Toast.LENGTH_SHORT).show();
                     final_teamName = teamName;
