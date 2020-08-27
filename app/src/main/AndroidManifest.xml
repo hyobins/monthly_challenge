@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="Project.Team.TeamDetailPopupActivity"></activity>
+        <activity android:name="Profile.MypointActivity"></activity>
+        <activity android:name="Project.Team.TeamDetailPopupActivity" />
         <activity android:name="Profile.MyteamsActivity" />
         <activity android:name="Profile.MyprojectDetailActivity" />
         <activity
