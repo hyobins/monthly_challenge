@@ -126,7 +126,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="50dp"
+                    android:background="@drawable/white_half_round_background">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -187,6 +188,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="2dp"
+                    android:background="#FFFFFF"
                     android:orientation="vertical"
                     android:paddingTop="10dp">
 
@@ -229,6 +231,7 @@
                                     android:gravity="center_vertical"
                                     android:paddingLeft="8dp"
                                     android:text="기업명"
+                                    android:textColor="#000000"
                                     android:textSize="14dp"
                                     android:textStyle="bold" />
 
@@ -249,6 +252,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="iHQ"
+                                    android:textColor="#3A3A3A"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
@@ -289,6 +293,7 @@
                                     android:gravity="center_vertical"
                                     android:paddingLeft="8dp"
                                     android:text="서비스 설명"
+                                    android:textColor="#000000"
                                     android:textSize="14dp"
                                     android:textStyle="bold" />
 
@@ -308,6 +313,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="TextView"
+                                    android:textColor="#3A3A3A"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
@@ -346,6 +352,7 @@
                                     android:gravity="center_vertical"
                                     android:paddingLeft="8dp"
                                     android:text="개발 및 디자인 방향"
+                                    android:textColor="#000000"
                                     android:textSize="14dp"
                                     android:textStyle="bold" />
 
@@ -365,6 +372,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="TextView"
+                                    android:textColor="#3A3A3A"
                                     android:textSize="14dp" />
 
                             </LinearLayout>
@@ -401,13 +409,12 @@
 
                             <TextView
                                 android:id="@+id/textView30"
-                                android:layout_width="46dp"
+                                android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginLeft="22dp"
-                                android:layout_marginRight="16dp"
+                                android:layout_marginLeft="16dp"
                                 android:layout_weight="1"
-                                android:gravity="left"
+                                android:gravity="center"
                                 android:text="개발자"
                                 android:textColor="#303030"
                                 android:textSize="15sp"
@@ -415,11 +422,11 @@
 
                             <TextView
                                 android:id="@+id/textView31"
-                                android:layout_width="29dp"
+                                android:layout_width="40dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
-                                android:gravity="right"
+                                android:gravity="center"
                                 android:text="2~3"
                                 android:textColor="#FE28A2"
                                 android:textSize="15sp"
@@ -442,8 +449,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="18dp"
                                 android:layout_gravity="center"
-                                android:layout_marginLeft="32dp"
-                                android:layout_marginRight="32dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="5dp"
                                 android:src="@drawable/line_lin" />
@@ -462,12 +469,11 @@
 
                             <TextView
                                 android:id="@+id/textView34"
-                                android:layout_width="29dp"
+                                android:layout_width="40dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginLeft="16dp"
                                 android:layout_weight="1"
-                                android:gravity="right"
+                                android:gravity="center"
                                 android:text="2~3"
                                 android:textColor="#FE28A2"
                                 android:textSize="15sp"
@@ -486,11 +492,10 @@
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
-                        //개발디자이너 모집인원
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp">
 
@@ -508,12 +513,14 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <Button
                                 android:id="@+id/button_createTeam"
                                 android:layout_width="335dp"
                                 android:layout_height="44dp"
+                                android:layout_gravity="center"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="30dp"
                                 android:layout_marginRight="20dp"
@@ -527,10 +534,20 @@
                                 android:textSize="17dp"
                                 android:visibility="visible" />
 
+                            <View
+                                android:id="@+id/view4"
+                                android:layout_width="match_parent"
+                                android:layout_height="180dp"
+                                android:layout_weight="1"
+                                android:background="#FFFFFF" />
+
                         </LinearLayout>
+
+                        //개발디자이너 모집인원
 
 
                     </LinearLayout>
+
                     //팀모집 상세 레이아웃
 
                     //제출 상세 레이아웃

@@ -345,7 +345,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
@@ -353,16 +353,17 @@
                 android:background="@drawable/white_round_background"
                 android:elevation="10dp"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
                 android:paddingRight="20dp"
-                android:paddingBottom="15dp">
+                android:paddingBottom="5dp">
 
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:padding="5dp"
                     app:srcCompat="@drawable/search" />
 
                 <EditText
@@ -383,7 +384,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#707070"
+                android:background="@drawable/gradient_background"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -399,7 +400,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="진행중"
-                        android:textColor="#000000"
+                        android:textColor="#FFFFFF"
                         android:textSize="18sp" />
 
                     <View
@@ -409,7 +410,7 @@
                         android:layout_marginLeft="40dp"
                         android:layout_marginRight="40dp"
                         android:layout_weight="1"
-                        android:background="#000000" />
+                        android:background="#86D6D6D6" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -425,7 +426,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="심사중"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#D6D6D6"
                         android:textSize="18sp" />
 
                     <View
@@ -452,7 +453,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="종료"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#D6D6D6"
                         android:textSize="18sp" />
 
                     <View
@@ -470,7 +471,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#909090"
+                android:background="#E1E1E1"
                 android:orientation="vertical">
 
                 <ListView

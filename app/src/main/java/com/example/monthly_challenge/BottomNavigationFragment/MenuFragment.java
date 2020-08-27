@@ -238,10 +238,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     }
 
     private void prevSettingAndChange(TextView textView, View view){
-        prevText.setTextColor(Color.parseColor("#ffffff"));
+        prevText.setTextColor(Color.parseColor("#D6D6D6"));
         prevView.setVisibility(View.INVISIBLE);
 
-        textView.setTextColor(Color.parseColor("#000000"));
+        textView.setTextColor(Color.parseColor("#ffffff"));
         view.setVisibility(View.VISIBLE);
 
         prevText = textView;
