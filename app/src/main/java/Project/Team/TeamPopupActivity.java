@@ -71,7 +71,7 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
         teamCollectionReference = db.collection("project").document(projectId).collection("team");
 
         binding.buttonCheck.setOnClickListener(this);
-        binding.buttonCancel.setOnClickListener(this);
+        binding.imageViewBack.setOnClickListener(this);
         binding.buttonCreate.setOnClickListener(this);
         binding.imageViewMinusDeveloper.setOnClickListener(this);
         binding.imageViewPlusDeveloper.setOnClickListener(this);
@@ -194,7 +194,7 @@ public class TeamPopupActivity extends Activity implements View.OnClickListener 
 
 
                 break;
-            case R.id.button_cancel :
+            case R.id.imageView_back :
                 finish();
 
             case R.id.imageView_minusDeveloper :

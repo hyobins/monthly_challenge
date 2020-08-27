@@ -13,8 +13,7 @@
         <activity android:name="Profile.MyteamsActivity" />
         <activity android:name="Profile.MyprojectDetailActivity" />
         <activity
-            android:name="Project.Team.TeamPopupActivity"
-            android:theme="@android:style/Theme.Dialog" />
+            android:name="Project.Team.TeamPopupActivity" />
         <activity android:name="Project.ProjectDetailActivity" />
         <activity android:name="Profile.MyprojectActivity" />
         <activity android:name="Profile.ProfileActivity" />
