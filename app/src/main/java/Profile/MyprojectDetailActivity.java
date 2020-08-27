@@ -92,7 +92,6 @@ public class MyprojectDetailActivity extends AppCompatActivity implements View.O
                         if(task.isSuccessful()){
                             DocumentSnapshot document = task.getResult();
                             teamName = Objects.requireNonNull(document.get("team_name")).toString();
-                            binding.myTeamName.setText(teamName);
 
                             db.collection("project")
                                     .document(projectId)
