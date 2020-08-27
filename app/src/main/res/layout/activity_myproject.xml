@@ -187,6 +187,9 @@
                     android:layout_marginTop="18dp"
                     android:layout_marginRight="18dp"
                     android:background="@drawable/white_right_half_round_background"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
                     android:scrollbars="none" />
             </LinearLayout>
 
