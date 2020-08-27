@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         fragmentManager = getSupportFragmentManager();
         bottomNavigationView = binding.bottomNavigation;
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.main_layout, homeFragment).commitAllowingStateLoss();
+        transaction.replace(R.id.main_layout, homeFragment);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         progressListItems = new ArrayList();
         judgeListItems = new ArrayList();
@@ -166,11 +166,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                                         endListItems.add(endListItem);
                                         break;
 
-
                                 }
+
 
 //                                Log.d(TAG, document.getId() + " => " + document.getData());
                             }
+                            transaction.commitAllowingStateLoss();
                         } else {
 //                            Log.w(TAG, "Error getting documents.", task.getException());
                         }
